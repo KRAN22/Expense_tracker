@@ -31,5 +31,18 @@ class LogConfig(BaseModel):
 class Setting(BaseModel):
     authJwt_secret_key : str = "6eb79abb9454995b30029931071a90dc852b4a5a6391d91432d147f432fc1a07" 
      
+class CreateUser(BaseModel):
+    username : str
+    email : str
+    password : str
     
-    
+    class Config:
+        orm_mode = True
+        schema_extra={
+            'example':{
+                'username':'kranthi',
+                'email':'kranthi@gmail.com',
+                'password': 'password'
+            }
+        }
+       
