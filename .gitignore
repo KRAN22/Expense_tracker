@@ -1,3 +1,5 @@
 Backend/Expense_tracker
 Backend/__pycache__ 
 Backend/routers/__pycache__
+Backend/repository/__pycache__
+Backend/services/__pycache__

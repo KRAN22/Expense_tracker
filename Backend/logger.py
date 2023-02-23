@@ -1,3 +1,3 @@
 import logging
 
-logger = logging.getLogger("FastApi")
+loggers = logging.getLogger("FastApi")
