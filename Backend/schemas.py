@@ -27,5 +27,9 @@ class LogConfig(BaseModel):
     loggers = {
         "FastApi": {"handlers": ["default"], "level": LOG_LEVEL},
     }
+
+class Setting(BaseModel):
+    authJwt_secret_key : str = "6eb79abb9454995b30029931071a90dc852b4a5a6391d91432d147f432fc1a07" 
+     
     
     
