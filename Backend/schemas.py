@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class LogConfig(BaseModel):
     """Logging configuration to be set for the server"""
@@ -46,3 +47,17 @@ class CreateUser(BaseModel):
             }
         }
        
+class SignUp(BaseModel):
+
+    username = Optional[str]
+    email = Optional[str]
+    password = str
+    
+    class Config:
+        orm_mode = True
+        schema_extra={
+            'example':{
+                'username': 'kranthi',
+                'password' : 'password'
+            }
+        }
