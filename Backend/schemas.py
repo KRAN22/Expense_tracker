@@ -49,9 +49,9 @@ class CreateUser(BaseModel):
        
 class SignUp(BaseModel):
 
-    username = Optional[str]
-    email = Optional[str]
-    password = str
+    username : Optional[str]
+    email : Optional[str]
+    password : str
     
     class Config:
         orm_mode = True
