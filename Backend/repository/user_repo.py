@@ -22,3 +22,9 @@ def getUserById(id,db:Session):
     queries.append(model.User.id==id)
     result = db.query(model.User).filter(*queries).first()
     return result
+
+def getUserByEmail(email,db:Session):
+    queries=[]
+    queries.append(model.User.email==email)
+    result = db.query(model.User).filter(*queries).first()
+    return result

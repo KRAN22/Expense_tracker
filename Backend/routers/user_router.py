@@ -30,3 +30,4 @@ def get_user_by_id(id:int,db:Session=Depends(get_db)):
     result = user_services.getUserById(id,db)
     loggers.info("Successfully get the user by id...")
     return result
+
