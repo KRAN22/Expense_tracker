@@ -61,3 +61,16 @@ class SignUp(BaseModel):
                 'password' : 'password'
             }
         }
+
+class Category(BaseModel):
+    
+    category_name : str
+    
+    class Config:
+        orm_mode = True
+        schema_extra={
+            'example':{
+                'category_name':"Home"
+            }
+        }
+         
