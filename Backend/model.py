@@ -13,3 +13,12 @@ class User(Base):
 
     def __repr__(self):
         return f"<User {self.username}>"
+    
+class Category(Base):
+    __tablename__ = "category"
+    
+    id = Column(Integer,primary_key=True,index= True,autoincrement=True)
+    category_name = Column(String(255))
+    
+    def __repr__(self):
+        return f"<Category {self.id}" 
