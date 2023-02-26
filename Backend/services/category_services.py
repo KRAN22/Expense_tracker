@@ -19,3 +19,11 @@ def CreateCategory(Category,db):
 def getAllCategories(db):
     result = category_repo.getAllCategories(db)
     return result
+
+def getCategoryById(id,db):
+    result = category_repo.getCategoryById(id,db)
+    if result:
+        return result
+    loggers.error(f"With the id {id} no categories found....")
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail=f"With the id {id} no categories found..")
