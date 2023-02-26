@@ -21,4 +21,4 @@ class Category(Base):
     category_name = Column(String(255))
     
     def __repr__(self):
-        return f"<Category {self.id}" 
+        return f"<Category {self.category_name}" 

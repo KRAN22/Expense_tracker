@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from logging.config import dictConfig
 from schemas import LogConfig, Setting
 from fastapi_jwt_auth.auth_jwt import AuthJWT
-from routers import user_router,auth_router
+from routers import user_router,auth_router,category_router
 from database import engine
 import model
 
@@ -18,3 +18,4 @@ def get_config():
 
 app.include_router(user_router.router)
 app.include_router(auth_router.router)
+app.include_router(category_router.router)
