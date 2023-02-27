@@ -1,0 +1,57 @@
+.Main{
+    width: 100%;
+    color: antiquewhite;
+    display: flex;
+    box-sizing: border-box;
+}
+.heading{
+    width: 65%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
+}
+.heading h1{
+    margin: 0;
+    text-shadow: 3px 3px 3px rgb(96, 141, 224);
+}
+.login{
+    border: 2px solid coral;
+    padding-top: 90px;
+    width:35%;
+    box-sizing: border-box;
+}
+.header{
+    text-align: center;
+}
+.header h1 {
+    margin: 0;
+}
+.header h4{
+    margin: 0;
+    color: rgba(245, 236, 236, 0.588);
+    padding-bottom: 40px;
+}
+.loginMain{
+    text-align: center;
+    color: #5c8;
+} 
+.tag{
+    padding-bottom: 30px;
+}
+
+#outlined-basic{
+    color: white;
+    background-color: rgba(229, 227, 227, 0.131);
+    padding-bottom: 10px;
+}
+#Btn{
+    width: 53%;
+}
+.footer{
+    text-align: center;
+    color: rgba(245, 236, 236, 0.588);
+    padding-top: 50px;
+}
