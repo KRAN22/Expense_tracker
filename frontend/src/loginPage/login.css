@@ -39,6 +39,9 @@
 .tag{
     padding-bottom: 30px;
 }
+.tag p{
+    margin: 0;
+}
 
 #outlined-basic{
     color: white;

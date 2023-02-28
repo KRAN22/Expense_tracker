@@ -1,10 +1,42 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
-import "./login.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import "./login.css";
 
 export const LoginForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [userError, setUserError] = useState();
+  const [passwordError, setPasswordError] = useState();
+
+  const onchangeUserHandler = (e) => {
+    setError();
+    setUserError();
+    setUsername(e.target.value);
+  };
+  const onChangePasswordHandler = (e) => {
+    setError();
+    setPasswordError();
+    setPassword(e.target.value);
+  };
+  const SubmitHandler = async () => {
+    if ((username.length > 0) & (password.length > 0)) {
+      const baseURL = "http://127.0.0.1:8000/api/auth/Login";
+      const body = { username, password };
+      try {
+        const response = await axios.post(baseURL, body);
+        window.localStorage.setItem("AccessToken", response.data.Access);
+      } catch (e) {
+        setError(e.response.data.detail);
+      }
+    }
+    setUserError(username.length === 0);
+    setPasswordError(password.length === 0);
+  };
   return (
     <div className="Main">
       <div className="heading">
@@ -17,7 +49,14 @@ export const LoginForm = () => {
         </div>
         <div className="loginMain">
           <div className="tag">
-            <TextField id="outlined-basic" label="Title" variant="outlined" type={"text"} />
+            <TextField
+              id="outlined-basic"
+              label="userName&email"
+              variant="outlined"
+              type={"text"}
+              onChange={onchangeUserHandler}
+            />
+            {userError && <p style={{ color: "red" }}>*username is Required</p>}
           </div>
           <div className="tag">
             <TextField
@@ -25,10 +64,15 @@ export const LoginForm = () => {
               label="Password"
               variant="outlined"
               type={"password"}
+              onChange={onChangePasswordHandler}
             />
+            {passwordError && (
+              <p style={{ color: "red" }}>*Password is Required</p>
+            )}
           </div>
           <div className="btn">
-            <Button id="Btn" variant="contained">
+            <p style={{ color: "red" }}>{error}</p>
+            <Button id="Btn" variant="contained" onClick={SubmitHandler}>
               Login
             </Button>
           </div>
