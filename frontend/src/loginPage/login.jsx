@@ -35,7 +35,7 @@ export const LoginForm = () => {
         </div>
         <div className="footer">
           <h4>
-            Don't have a account? <Link>SignUp</Link>
+            Don't have a account? <Link to={"/signUp"}>SignUp</Link>
           </h4>
         </div>
       </div>

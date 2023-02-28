@@ -15,10 +15,9 @@
 }
 .heading h1{
     margin: 0;
-    text-shadow: 3px 3px 3px rgb(96, 141, 224);
+    text-shadow: 3px 3px 3px red;
 }
 .login{
-    border: 2px solid coral;
     padding-top: 90px;
     width:35%;
     box-sizing: border-box;
@@ -36,7 +35,6 @@
 }
 .loginMain{
     text-align: center;
-    color: #5c8;
 } 
 .tag{
     padding-bottom: 30px;
