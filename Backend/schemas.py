@@ -73,14 +73,3 @@ class Category(BaseModel):
                 'categoryName':"Home"
             }
         }
-         
-# class UpdateCategory(BaseModel):
-#     categoryName : Optional[str]
-    
-#     class Config:
-#         orm_mode = True
-#         schema_extra={
-#             'example':{
-#                 'categoryName':"Home"
-#             }
-#         }
