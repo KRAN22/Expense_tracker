@@ -61,10 +61,10 @@
 .category-list-items{
     width: 100%;
     display: flex;
+    color: aliceblue;
 }
 .id{
-    width: 30%;
-    border: 2px solid red;
+    width: 10%;
 
 }
 .id h2{
@@ -72,11 +72,22 @@
     padding-right: 20px;
 }
 .category{
-    width: 70%;
-    border: 2px solid;
+    width: 50%;
 }
 
 .category h2{
     margin: 0;
-    padding-left: 60px;
+}
+
+.edit{
+    width:20% ;
+}
+.edit h2{
+    margin: 0;
+}
+.delete{
+    width: 20%;
+}
+.delete h2{
+    margin: 0;
 }
