@@ -18,7 +18,7 @@ class Category(Base):
     __tablename__ = "category"
     
     id = Column(Integer,primary_key=True,index= True,autoincrement=True)
-    category_name = Column(String(255))
+    categoryName = Column(String(255))
     
     def __repr__(self):
         return f"<Category {self.category_name}" 

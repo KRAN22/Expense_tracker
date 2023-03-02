@@ -4,14 +4,14 @@ from logger import loggers
 import model
 
 def CreateCategory(Category,db):
-    category = category_repo.getCategoryByName(Category.category_name,db)
+    category = category_repo.getCategoryByName(Category.categoryName,db)
     if category:
         loggers.info("The category is already excited....")
         raise HTTPException(status_code=status.HTTP_208_ALREADY_REPORTED,
                             detail="category already excited...")
     
     new_category = model.Category(
-        category_name = Category.category_name
+        categoryName = Category.categoryName
     )
     result = category_repo.createCategory(new_category,db)
     return result

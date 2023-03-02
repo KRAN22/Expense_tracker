@@ -1,0 +1,82 @@
+/* Category Add  */
+.category-main{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    box-sizing: border-box;
+}
+.category-add{
+    width: 35%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: black;
+}
+.box{
+    width: 80%;
+    height: 96vh;
+    background-color: #1d1d1d;
+    border-radius: 25px;
+}
+.category-add h1{
+    font-size: 200%;
+    color: aliceblue;
+    padding-top: 80px;
+}
+
+.tag{
+    padding-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+#category-Btn{
+    width: 83%;
+}
+
+/* Category list */
+
+.category-list{
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: black;
+}
+.list-box{
+    width: 96%;
+    height: 96vh;
+    background-color: #1d1d1d;
+    border-radius: 25px; 
+}
+.category-list h1{
+    color: aliceblue;
+    text-align: center;
+    margin: 0%;
+    padding: 10px 0px 10px 0px;
+}
+
+.category-list-items{
+    width: 100%;
+    display: flex;
+}
+.id{
+    width: 30%;
+    border: 2px solid red;
+
+}
+.id h2{
+    margin: 0;
+    padding-right: 20px;
+}
+.category{
+    width: 70%;
+    border: 2px solid;
+}
+
+.category h2{
+    margin: 0;
+    padding-left: 60px;
+}

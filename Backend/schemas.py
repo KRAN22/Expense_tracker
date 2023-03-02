@@ -64,7 +64,7 @@ class SignUp(BaseModel):
 
 class Category(BaseModel):
     
-    category_name : str
+    categoryName : str
     
     class Config:
         orm_mode = True

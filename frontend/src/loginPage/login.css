@@ -36,10 +36,10 @@
 .loginMain{
     text-align: center;
 } 
-.tag{
-    padding-bottom: 30px;
+.log-tag{
+    padding-bottom: 40px;
 }
-.tag p{
+.log-tag p{
     margin: 0;
 }
 
@@ -54,5 +54,5 @@
 .footer{
     text-align: center;
     color: rgba(245, 236, 236, 0.588);
-    padding-top: 50px;
+    padding-top: 40px;
 }

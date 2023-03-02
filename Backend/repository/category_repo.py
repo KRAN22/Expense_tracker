@@ -9,7 +9,7 @@ def createCategory(category,db:Session):
 
 def getCategoryByName(name,db:Session):
     queries=[]
-    queries.append(model.Category.category_name == name)
+    queries.append(model.Category.categoryName == name)
     result =  db.query(model.Category).filter(*queries).first()
     return result
 

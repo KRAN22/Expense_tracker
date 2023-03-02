@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "./login.css";
@@ -12,6 +12,8 @@ export const LoginForm = () => {
   const [error, setError] = useState("");
   const [userError, setUserError] = useState();
   const [passwordError, setPasswordError] = useState();
+
+  const navigate = useNavigate();
 
   const onchangeUserHandler = (e) => {
     setError();
@@ -29,6 +31,7 @@ export const LoginForm = () => {
       const body = { username, password };
       try {
         const response = await axios.post(baseURL, body);
+        navigate("/expenseTracker")
         window.localStorage.setItem("AccessToken", response.data.Access);
       } catch (e) {
         setError(e.response.data.detail);
@@ -48,7 +51,7 @@ export const LoginForm = () => {
           <h4>Please enter your details.</h4>
         </div>
         <div className="loginMain">
-          <div className="tag">
+          <div className="log-tag">
             <TextField
               id="outlined-basic"
               label="userName&email"
@@ -58,7 +61,7 @@ export const LoginForm = () => {
             />
             {userError && <p style={{ color: "red" }}>*username is Required</p>}
           </div>
-          <div className="tag">
+          <div className="log-tag">
             <TextField
               id="outlined-basic"
               label="Password"
