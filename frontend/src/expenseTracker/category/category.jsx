@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import "./category.css";
 import { useState } from "react";
 import axios from "axios";
-import { CategoryList } from "./categoryList";
 
 export const Category = () => {
   const [categoryName, setCategoryName] = useState();
@@ -53,7 +52,6 @@ export const Category = () => {
           </div>
         </div>
       </div>
-      <CategoryList />
     </div>
   );
 };

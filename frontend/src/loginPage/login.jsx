@@ -31,7 +31,7 @@ export const LoginForm = () => {
       const body = { username, password };
       try {
         const response = await axios.post(baseURL, body);
-        navigate("/expenseTracker")
+        navigate("/expenseTracker");
         window.localStorage.setItem("AccessToken", response.data.Access);
       } catch (e) {
         setError(e.response.data.detail);
@@ -46,44 +46,50 @@ export const LoginForm = () => {
         <h1>Expense Tracker</h1>
       </div>
       <div className="login">
-        <div className="header">
-          <h1>Welcome Back</h1>
-          <h4>Please enter your details.</h4>
-        </div>
-        <div className="loginMain">
-          <div className="log-tag">
-            <TextField
-              id="outlined-basic"
-              label="userName&email"
-              variant="outlined"
-              type={"text"}
-              onChange={onchangeUserHandler}
-            />
-            {userError && <p style={{ color: "red" }}>*username is Required</p>}
+        <div className="box">
+          <div className="header">
+            <h1>Welcome Back</h1>
+            <h4>Please enter your details.</h4>
           </div>
-          <div className="log-tag">
-            <TextField
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
-              type={"password"}
-              onChange={onChangePasswordHandler}
-            />
-            {passwordError && (
-              <p style={{ color: "red" }}>*Password is Required</p>
-            )}
+          <div className="loginMain">
+            <div className="log-tag">
+              <TextField
+                id="outlined-basic"
+                label="userName&email"
+                variant="outlined"
+                type={"text"}
+                color={"secondary"}
+                onChange={onchangeUserHandler}
+              />
+              {userError && (
+                <p style={{ color: "red" }}>*username is Required</p>
+              )}
+            </div>
+            <div className="log-tag">
+              <TextField
+                id="outlined-basic"
+                label="Password"
+                variant="outlined"
+                type={"password"}
+                color={"error"}
+                onChange={onChangePasswordHandler}
+              />
+              {passwordError && (
+                <p style={{ color: "red" }}>*Password is Required</p>
+              )}
+            </div>
+            <div className="btn">
+              <p style={{ color: "red" }}>{error}</p>
+              <Button id="Btn" variant="contained" onClick={SubmitHandler}>
+                Login
+              </Button>
+            </div>
           </div>
-          <div className="btn">
-            <p style={{ color: "red" }}>{error}</p>
-            <Button id="Btn" variant="contained" onClick={SubmitHandler}>
-              Login
-            </Button>
+          <div className="footer">
+            <h4>
+              Don't have a account? <Link to={"/signUp"}>SignUp</Link>
+            </h4>
           </div>
-        </div>
-        <div className="footer">
-          <h4>
-            Don't have a account? <Link to={"/signUp"}>SignUp</Link>
-          </h4>
         </div>
       </div>
     </div>

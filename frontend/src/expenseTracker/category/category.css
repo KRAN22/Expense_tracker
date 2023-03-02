@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 .category-add{
-    width: 35%;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -32,24 +32,41 @@
     text-align: center;
 }
 #category-Btn{
-    width: 83%;
+    width: 30%;
 }
 
 /* Category list */
 
-.category-list{
-    width: 65%;
+.categoryList-main{
+    width: 100%;
     display: flex;
+    text-align: center;
+    box-sizing: border-box;   
+}
+
+.category-list{
+    width: 100%;
+    display: flex;
+    height: 100vh;
     justify-content: center;
     box-sizing: border-box;
     align-items: center;
     background-color: black;
 }
 .list-box{
-    width: 96%;
+    width: 95%;                             
     height: 96vh;
     background-color: #1d1d1d;
     border-radius: 25px; 
+}
+.addBtn{
+    margin-left: 700px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 7px;
+    background-color: #e35933;
+    color: aliceblue;
+    border-color: #e35933;
 }
 .category-list h1{
     color: aliceblue;
@@ -91,3 +108,6 @@
 .delete h2{
     margin: 0;
 }
+
+/* Category Edit*/
+

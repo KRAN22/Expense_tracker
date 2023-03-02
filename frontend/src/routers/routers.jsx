@@ -4,7 +4,7 @@ import { LoginForm } from "../loginPage/login";
 import { SignUp } from "../loginPage/signup";
 import { ExpenseTracker } from "../expenseTracker/main";
 import { ProtectedRout } from "../protectedRout";
-import { Category } from "../expenseTracker/category/category";
+import { CategoryList } from "../expenseTracker/category/category-List";
 
 export const Routers = () => {
   return (
@@ -14,7 +14,7 @@ export const Routers = () => {
         <Route path="/signUp" element={<SignUp />} />
         <Route element={<ProtectedRout />}>
           <Route path="/expenseTracker" element={<ExpenseTracker />}>
-            <Route path="/expenseTracker/category" element={<Category />} />
+            <Route path="/expenseTracker/category" element={<CategoryList />} />
           </Route>
         </Route>
       </Routes>
