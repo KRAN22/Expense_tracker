@@ -20,6 +20,24 @@ export const CategoryList = () => {
           console.log(e.response.data);
         }
       };
+
+    const OnClickDelete = async(id)=>{
+      const baseURL = `http://127.0.0.1:8000/api/category/deleteCategory/${id}`
+      try{
+        const response = await axios.delete(baseURL)
+        if(response){
+          window.location.reload()
+        }
+      }catch (e){
+        console.log(e.response.data);
+      }
+    }
+    
+    const onClickEdit = ()=>{
+
+    }
+
+
   return (
     <div className="category-list">
       <div className="list-box">
@@ -50,14 +68,14 @@ export const CategoryList = () => {
                   <h2>{item.categoryName}</h2>
                 </div>
                 <div className="edit">
-                  <h2>
+                  <button onClick={()=>onClickEdit()}>
                     <EditIcon />
-                  </h2>
+                  </button>
                 </div>
                 <div className="delete">
-                  <h2>
+                  <button onClick={() => OnClickDelete(item.id)}>
                     <DeleteTwoToneIcon />
-                  </h2>
+                  </button>
                 </div>
               </div>
             );

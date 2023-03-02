@@ -27,3 +27,20 @@ def getCategoryById(id,db):
     loggers.error(f"With the id {id} no categories found....")
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f"With the id {id} no categories found..")
+    
+def deleteCategory(id,db):
+    result = category_repo.deleteCategory(id,db)
+    return result
+    
+def updateCategory(id,category,db):
+    current_category = category_repo.getCategoryById(id,db)
+    if not current_category:
+        loggers.error(f"With the id {id} the category is not found..")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"With the id {id} the category not found ")
+        
+    if category.categoryName:
+        current_category.categoryName = category.categoryName
+        
+    result = category_repo.updateCategory(current_category,db)
+    return result

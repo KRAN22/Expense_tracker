@@ -4,7 +4,6 @@ from services import category_services
 from database import get_db
 from schemas import Category
 from logger import loggers
-import model
 
 
 router = APIRouter(
@@ -31,4 +30,18 @@ def get_category_by_id(id:int,db:Session=Depends(get_db)):
     loggers.info("get category bt id request received....")
     result = category_services.getCategoryById(id,db)
     loggers.info("Successfully get category by id....")
+    return result
+
+@router.delete("/deleteCategory/{id}")
+def delete_category(id:int,db:Session=Depends(get_db)):
+    loggers.info("Delete category request received...")
+    result = category_services.deleteCategory(id,db)
+    loggers.info("Successfully delete category...")
+    return result
+
+@router.put("/updateCategory/{id}")
+def update_category(category:Category,id:int,db:Session=Depends(get_db)):
+    loggers.info("update request received....")
+    result = category_services.updateCategory(id,category,db)
+    loggers.info("Successfully updated todo....")
     return result

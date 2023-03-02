@@ -70,7 +70,17 @@ class Category(BaseModel):
         orm_mode = True
         schema_extra={
             'example':{
-                'category_name':"Home"
+                'categoryName':"Home"
             }
         }
          
+# class UpdateCategory(BaseModel):
+#     categoryName : Optional[str]
+    
+#     class Config:
+#         orm_mode = True
+#         schema_extra={
+#             'example':{
+#                 'categoryName':"Home"
+#             }
+#         }
