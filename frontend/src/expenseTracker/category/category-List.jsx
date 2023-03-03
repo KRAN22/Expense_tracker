@@ -1,17 +1,17 @@
-import "./category.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Category } from "./category";
 import { CategoryEdit } from "./category-Edit";
+import { Button, Divider, Grid, Typography } from "@mui/material";
 
 export const CategoryList = () => {
   const [list, setList] = useState([]);
   const [event, setEvent] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [categoryName,setCategoryName] = useState("")
-  const [ids,setIds] = useState("")
+  const [categoryName, setCategoryName] = useState("");
+  const [ids, setIds] = useState("");
 
   useEffect(() => {
     getCategory();
@@ -41,74 +41,98 @@ export const CategoryList = () => {
   const OnClickEvent = () => {
     setEvent(true);
   };
-
-  const onClickEdit = (categoryName,id) => {
+  const onClickEdit = (categoryName, id) => {
     setEdit(true);
-    setCategoryName(categoryName)
-    setIds(id)
+    setCategoryName(categoryName);
+    setIds(id);
   };
-  
+
   return (
-    <div>
+    <>
       {edit ? (
-        <CategoryEdit category={{categoryName,ids}} />
+        <CategoryEdit category={{ categoryName, ids }} />
       ) : (
-        <div>
+        <>
           {event ? (
             <Category />
           ) : (
-            <div className="categoryList-main">
-              <div className="category-list">
-                <div className="list-box">
-                  <button className="addBtn" onClick={OnClickEvent}>
+            <Grid container xs={12}>
+              <Grid item container xs={10} p={2} margin={"Auto"}>
+                <Grid item xs={12} sx={{ textAlign: "center" }}>
+                  <Typography variant="h4">Category list</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="contained" onClick={OnClickEvent}>
                     Add Category
-                  </button>
-                  <h1>Category list</h1>
-                  <div className="category-list-items">
-                    <div className="id">
-                      <h2>ID</h2>
-                    </div>
-                    <div className="category">
-                      <h2>CATEGORIES NAME</h2>
-                    </div>
-                    <div className="edit">
-                      <h2>EDIT</h2>
-                    </div>
-                    <div className="delete">
-                      <h2>DELETE</h2>
-                    </div>
-                  </div>
-                  <hr className="hr"></hr>
-                  <div>
-                    {list.map((item) => {
-                      return (
-                        <div key={item.id} className="category-list-items">
-                          <div className="id">
-                            <h2>{item.id}</h2>
-                          </div>
-                          <div className="category">
-                            <h2>{item.categoryName}</h2>
-                          </div>
-                          <div className="edit">
-                            <button onClick={() => onClickEdit(item.categoryName,item.id)}>
-                              <EditIcon />
-                            </button>
-                          </div>
-                          <div className="delete">
-                            <button onClick={() => OnClickDelete(item.id)}>
-                              <DeleteTwoToneIcon />
-                            </button>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </Button>
+                </Grid>
+              </Grid>
+              <Grid item container xs={12}>
+                <Grid
+                  item
+                  container
+                  xs={10}
+                  margin={"Auto"}
+                  sx={{ textAlign: "center", background: "white" }}
+                >
+                  <Grid item xs={2}>
+                    <Typography variant="h6">ID</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="h6">CATEGORYNAME</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography variant="h6">EDIT</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography variant="h6">DELETE</Typography>
+                  </Grid>
+                </Grid>
+                <Divider color={"red"} />
+                {list.map((item) => {
+                  return (
+                    <Grid
+                      item
+                      container
+                      key={item.id}
+                      xs={10}
+                      margin={"Auto"}
+                      sx={{ textAlign: "center", background: "white" }}
+                    >
+                      <Grid item xs={2}>
+                        <Typography variant="h6">{item.id}</Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography variant="h6">
+                          {item.categoryName}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Typography variant="h6">
+                          <button
+                            onClick={() =>
+                              onClickEdit(item.categoryName, item.id)
+                            }
+                          >
+                            <EditIcon />
+                          </button>
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Typography variant="h6">
+                          <button onClick={() => OnClickDelete(item.id)}>
+                            <DeleteTwoToneIcon />
+                          </button>
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Grid>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };

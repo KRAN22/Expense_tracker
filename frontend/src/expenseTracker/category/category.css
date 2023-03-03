@@ -1,113 +1,34 @@
 /* Category Add  */
-.category-main{
-    width: 100%;
-    display: flex;
-    text-align: center;
-    box-sizing: border-box;
+.category-main {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  box-sizing: border-box;
 }
-.category-add{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-    align-items: center;
-    background-color: black;
+.category-add {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  align-items: center;
 }
-.box{
-    width: 80%;
-    height: 96vh;
-    background-color: #1d1d1d;
-    border-radius: 25px;
+.box {
+  width: 80%;
+  height: 96vh;
+  border-radius: 25px;
 }
-.category-add h1{
-    font-size: 200%;
-    color: aliceblue;
-    padding-top: 80px;
+.category-add h1 {
+  font-size: 200%;
+  color: aliceblue;
+  padding-top: 80px;
 }
 
-.tag{
-    padding-top: 40px;
-    width: 100%;
-    text-align: center;
+.tag {
+  padding-top: 40px;
+  width: 100%;
+  text-align: center;
 }
-#category-Btn{
-    width: 30%;
+#category-Btn {
+  width: 30%;
 }
-
-/* Category list */
-
-.categoryList-main{
-    width: 100%;
-    display: flex;
-    text-align: center;
-    box-sizing: border-box;   
-}
-
-.category-list{
-    width: 100%;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    box-sizing: border-box;
-    align-items: center;
-    background-color: black;
-}
-.list-box{
-    width: 95%;                             
-    height: 96vh;
-    background-color: #1d1d1d;
-    border-radius: 25px; 
-}
-.addBtn{
-    margin-left: 700px;
-    margin-top: 5px;
-    padding: 5px;
-    border-radius: 7px;
-    background-color: #e35933;
-    color: aliceblue;
-    border-color: #e35933;
-}
-.category-list h1{
-    color: aliceblue;
-    text-align: center;
-    margin: 0%;
-    padding: 10px 0px 10px 0px;
-}
-
-.category-list-items{
-    width: 100%;
-    display: flex;
-    color: aliceblue;
-}
-.id{
-    width: 10%;
-
-}
-.id h2{
-    margin: 0;
-    padding-right: 20px;
-}
-.category{
-    width: 50%;
-}
-
-.category h2{
-    margin: 0;
-}
-
-.edit{
-    width:20% ;
-}
-.edit h2{
-    margin: 0;
-}
-.delete{
-    width: 20%;
-}
-.delete h2{
-    margin: 0;
-}
-
-/* Category Edit*/
-

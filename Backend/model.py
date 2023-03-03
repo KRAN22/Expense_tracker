@@ -2,7 +2,6 @@ from database import Base
 from sqlalchemy import String,Column,Integer
 
 
-
 class User(Base):
     __tablename__ = "user"
     

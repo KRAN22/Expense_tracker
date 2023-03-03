@@ -1,10 +1,10 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { TextField } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import "./login.css";
+import Box from "@mui/material/Box";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -41,57 +41,64 @@ export const LoginForm = () => {
     setPasswordError(password.length === 0);
   };
   return (
-    <div className="Main">
-      <div className="heading">
-        <h1>Expense Tracker</h1>
-      </div>
-      <div className="login">
-        <div className="box">
-          <div className="header">
-            <h1>Welcome Back</h1>
+    <Grid sx={{ height: "100vh" }} container xs={12}>
+      <Grid item container xs={12} sm={8} md={8} sx={{ background: "#e3e3e3" }}>
+        <Grid direction="column" m="auto" p={2} item>
+          <Typography variant="h2" fontSize={"80px"}>
+            Expense Tracker
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid item container p={2} xs={12} sm={4} md={4}>
+        <Grid item container xs={8} margin="auto" rowSpacing={2}>
+          <h1>Welcome Back</h1>
+          <Box mt={2} mb={2}>
             <h4>Please enter your details.</h4>
-          </div>
-          <div className="loginMain">
-            <div className="log-tag">
-              <TextField
-                id="outlined-basic"
-                label="userName&email"
-                variant="outlined"
-                type={"text"}
-                color={"secondary"}
-                onChange={onchangeUserHandler}
-              />
-              {userError && (
-                <p style={{ color: "red" }}>*username is Required</p>
-              )}
-            </div>
-            <div className="log-tag">
-              <TextField
-                id="outlined-basic"
-                label="Password"
-                variant="outlined"
-                type={"password"}
-                color={"error"}
-                onChange={onChangePasswordHandler}
-              />
-              {passwordError && (
-                <p style={{ color: "red" }}>*Password is Required</p>
-              )}
-            </div>
-            <div className="btn">
-              <p style={{ color: "red" }}>{error}</p>
-              <Button id="Btn" variant="contained" onClick={SubmitHandler}>
-                Login
-              </Button>
-            </div>
-          </div>
-          <div className="footer">
-            <h4>
+          </Box>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              sx={{ background: "white" }}
+              label="username"
+              autoComplete="off"
+              variant="outlined"
+              required
+              type={"text"}
+              error={userError}
+              onChange={onchangeUserHandler}
+            />
+          </Grid>
+          <Grid xs={12} item>
+            <TextField
+              fullWidth
+              sx={{ background: "white" }}
+              label="password"
+              required
+              error={passwordError}
+              autoComplete="off"
+              variant="outlined"
+              type={"password"}
+              onChange={onChangePasswordHandler}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <p style={{ color: "red" }}>{error}</p>
+            <Button
+              fullWidth
+              id="Btn"
+              variant="contained"
+              onClick={SubmitHandler}
+            >
+              Login
+            </Button>
+          </Grid>
+          <Grid item xs={12} mt={2} sx={{ textAlign: "center" }}>
+            <Typography variant="p">
               Don't have a account? <Link to={"/signUp"}>SignUp</Link>
-            </h4>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
