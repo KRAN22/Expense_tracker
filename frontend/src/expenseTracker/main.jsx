@@ -1,25 +1,40 @@
 import React from "react";
 import image from "../image/image1.png";
 import { Link, Outlet } from "react-router-dom";
-import { Divider, Grid } from "@mui/material";
+import { Box, Button, Divider, Grid } from "@mui/material";
 import "./main.css";
 
 export const ExpenseTracker = () => {
+  const clear = () => {
+    window.localStorage.clear();
+  };
   return (
     <Grid sx={{ height: "100vh" }} container xs={12}>
       <Grid container item xs={2} sx={{ background: "lightgreen" }}>
         <Grid container item xs={12} direction="column">
           <Grid item xs={3} direction="column" margin={"auto"}>
-            <div className="ex-image">
+            <Box className="ex-image">
               <img src={image} alt="people" />
               <h5>Hello,kranthi</h5>
-            </div>
+            </Box>
             <Divider color="white" />
           </Grid>
-          <Grid item xs={9} p={1} sx={{ margin: "auto" }}>
-            <div className="ex-categories">
-              <Link to={"/expenseTracker/category"}>Category</Link>
-            </div>
+          <Grid item xs={8} p={1} sx={{ margin: "auto" }}>
+            <Button>
+              <Link
+                to={"/expenseTracker/category"}
+                style={{ textDecoration: "none" }}
+              >
+                Category
+              </Link>
+            </Button>
+          </Grid>
+          <Grid item xs={1} sx={{ margin: "Auto" }}>
+            <Button onClick={clear} variant="contained">
+              <Link to={"/"} style={{ textDecoration: "none" }}>
+                LogOut
+              </Link>
+            </Button>
           </Grid>
         </Grid>
       </Grid>

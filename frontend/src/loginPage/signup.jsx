@@ -54,7 +54,10 @@ export const SignUp = () => {
         </Grid>
         <Grid item xs={12} sx={{ textAlign: "center" }}>
           <Typography>
-            Already have an account? <Link to={"/"}>Login</Link>
+            Already have an account?{" "}
+            <Link to={"/"} style={{ textDecoration: "none" }}>
+              Login
+            </Link>
           </Typography>
         </Grid>
       </Grid>

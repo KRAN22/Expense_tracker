@@ -94,7 +94,10 @@ export const LoginForm = () => {
           </Grid>
           <Grid item xs={12} mt={2} sx={{ textAlign: "center" }}>
             <Typography variant="p">
-              Don't have a account? <Link to={"/signUp"}>SignUp</Link>
+              Don't have a account?{" "}
+              <Link to={"/signUp"} style={{ textDecoration: "none" }}>
+                SignUp
+              </Link>
             </Typography>
           </Grid>
         </Grid>
