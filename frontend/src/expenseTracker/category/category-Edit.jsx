@@ -1,4 +1,3 @@
-import "./category.css";
 import { Grid, TextField, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { useState } from "react";

@@ -1,7 +1,6 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { Button } from "@mui/material";
-import "./category.css";
 import { useState } from "react";
 import axios from "axios";
 
@@ -28,30 +27,39 @@ export const Category = () => {
   };
 
   return (
-    <div className="category-main">
-      <div className="category-add">
-        <div className="box">
-          <h1>Add your Category</h1>
-          <div className="tag">
-            <TextField
-              id="outlined-basic"
-              label="category"
-              variant="outlined"
-              type={"text"}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <div className="tag">
-            <Button
-              id="category-Btn"
-              variant="contained"
-              onClick={SubmitHandler}
-            >
-              Add
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Grid container xs={12} height={"100vh"} margin={"Auto"}>
+      <Grid
+        item
+        container
+        xs={4}
+        height={"90vh"}
+        p={2}
+        sx={{
+          background: "white",
+          margin: "Auto",
+          borderRadius: "30px",
+        }}
+      >
+        <Grid item xs={12}>
+          <Typography variant="h5" pt={"40px"} sx={{ textAlign: "center" }}>
+            Add Your Category
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="category"
+            variant="outlined"
+            type={"text"}
+            onChange={onChangeHandler}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button fullWidth variant="contained" onClick={SubmitHandler}>
+            Add
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
