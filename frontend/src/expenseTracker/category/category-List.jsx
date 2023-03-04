@@ -108,22 +108,18 @@ export const CategoryList = () => {
                         </Typography>
                       </Grid>
                       <Grid item xs={2}>
-                        <Typography variant="h6">
-                          <button
-                            onClick={() =>
-                              onClickEdit(item.categoryName, item.id)
-                            }
-                          >
-                            <EditIcon />
-                          </button>
-                        </Typography>
+                        <Button
+                          onClick={() =>
+                            onClickEdit(item.categoryName, item.id)
+                          }
+                        >
+                          <EditIcon />
+                        </Button>
                       </Grid>
                       <Grid item xs={2}>
-                        <Typography variant="h6">
-                          <button onClick={() => OnClickDelete(item.id)}>
-                            <DeleteTwoToneIcon />
-                          </button>
-                        </Typography>
+                        <Button onClick={() => OnClickDelete(item.id)}>
+                          <DeleteTwoToneIcon />
+                        </Button>
                       </Grid>
                     </Grid>
                   );
