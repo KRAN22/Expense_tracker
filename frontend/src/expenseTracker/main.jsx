@@ -10,7 +10,7 @@ export const ExpenseTracker = () => {
   };
   return (
     <Grid sx={{ height: "100vh" }} container xs={12}>
-      <Grid container item xs={2} sx={{ background: "lightgreen" }}>
+      <Grid container item xs={2} sx={{ background: "white" }}>
         <Grid container item xs={12} direction="column">
           <Grid item xs={3} direction="column" margin={"auto"}>
             <Box className="ex-image">
@@ -38,7 +38,7 @@ export const ExpenseTracker = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={10} sx={{ background: "lightblue" }}>
+      <Grid item xs={10} sx={{ background: "lightgray" }}>
         <Outlet />
       </Grid>
     </Grid>
