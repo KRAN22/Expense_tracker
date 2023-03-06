@@ -12,7 +12,7 @@ export const ExpenseTracker = () => {
     <Grid sx={{ height: "100vh" }} container xs={12}>
       <Grid container item xs={2} sx={{ background: "white" }}>
         <Grid container item xs={12} direction="column">
-          <Grid item xs={3} direction="column" margin={"auto"}>
+          <Grid container item xs={3} direction="column" margin={"auto"}>
             <Box className="ex-image">
               <img src={image} alt="people" />
               <h5>Hello,kranthi</h5>

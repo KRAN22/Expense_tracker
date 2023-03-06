@@ -76,16 +76,28 @@ export const CategoryList = () => {
                   sx={{ textAlign: "center", background: "white" }}
                 >
                   <Grid item xs={2}>
-                    <Typography variant="h6">ID</Typography>
+                    <Typography variant="h6" color={"Blue"}>
+                      ID
+                    </Typography>
+                    <Divider color={"Black"} />
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography variant="h6">CATEGORYNAME</Typography>
+                    <Typography variant="h6" color={"Blue"}>
+                      CATEGORYNAME
+                    </Typography>
+                    <Divider color={"Black"} />
                   </Grid>
                   <Grid item xs={2}>
-                    <Typography variant="h6">EDIT</Typography>
+                    <Typography variant="h6" color={"Blue"}>
+                      EDIT
+                    </Typography>
+                    <Divider color={"Black"} />
                   </Grid>
                   <Grid item xs={2}>
-                    <Typography variant="h6">DELETE</Typography>
+                    <Typography variant="h6" color={"Blue"}>
+                      DELETE
+                    </Typography>
+                    <Divider color={"Black"} />
                   </Grid>
                 </Grid>
                 <Divider color={"red"} />
