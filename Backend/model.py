@@ -1,5 +1,6 @@
 from database import Base
-from sqlalchemy import String,Column,Integer
+from sqlalchemy import String,Column,Integer,ForeignKey,Date,Boolean
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -19,5 +20,17 @@ class Category(Base):
     id = Column(Integer,primary_key=True,index= True,autoincrement=True)
     categoryName = Column(String(255))
     
+    
     def __repr__(self):
         return f"<Category {self.category_name}" 
+    
+class Transection(Base):
+    __tablename__ = "transection"
+    
+    id = Column(Integer,autoincrement=True,primary_key=True,index=True)
+    category_id = Column(Integer,ForeignKey("category.id"))
+    amount = Column(Integer)
+    date = Column(Date,index=True)
+    id_delete = Column(Boolean,default=True)
+    
+    
