@@ -19,13 +19,21 @@ export const ExpenseTracker = () => {
             </Box>
             <Divider color="white" />
           </Grid>
-          <Grid item xs={8} p={1} sx={{ margin: "auto" }}>
+          <Grid item xs={8} p={1} sx={{ margin: "auto", textAlign: "center" }}>
             <Button>
               <Link
                 to={"/expenseTracker/category"}
                 style={{ textDecoration: "none" }}
               >
                 Category
+              </Link>
+            </Button>
+            <Button>
+              <Link
+                to={"/expenseTracker/transaction"}
+                style={{ textDecoration: "none" }}
+              >
+                Transaction
               </Link>
             </Button>
           </Grid>

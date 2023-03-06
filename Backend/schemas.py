@@ -1,5 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 from typing import Optional
+from datetime import date
 
 class LogConfig(BaseModel):
     """Logging configuration to be set for the server"""
@@ -71,5 +72,24 @@ class Category(BaseModel):
         schema_extra={
             'example':{
                 'categoryName':"Home"
+            }
+        }
+        
+class Transaction(BaseModel):
+    
+    category_id : int
+    amount : int
+    date: date
+    comments : str
+    is_delete: Optional[bool]
+    
+    class Config:
+        orm_mode = True
+        schema_extra = {
+            'example':{
+                'category_id': 1,
+                'amount': 230,
+                'date' : date(2022,2,1),
+                'comments': "add something" 
             }
         }

@@ -5,6 +5,7 @@ import { SignUp } from "../loginPage/signup";
 import { ExpenseTracker } from "../expenseTracker/main";
 import { ProtectedRout } from "../protectedRout";
 import { CategoryList } from "../expenseTracker/category/category-List";
+import { Transaction } from "../expenseTracker/transactions/transaction_list";
 
 export const Routers = () => {
   return (
@@ -15,6 +16,10 @@ export const Routers = () => {
         <Route element={<ProtectedRout />}>
           <Route path="/expenseTracker" element={<ExpenseTracker />}>
             <Route path="/expenseTracker/category" element={<CategoryList />} />
+            <Route
+              path="/expenseTracker/transaction"
+              element={<Transaction />}
+            />
           </Route>
         </Route>
       </Routes>
