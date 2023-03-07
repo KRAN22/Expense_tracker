@@ -1,10 +1,9 @@
-import './App.css';
-import { Routers } from './routers/routers';
+import { Routers } from "./routers/routers";
 
 function App() {
   return (
     <div className="App">
-     <Routers/>
+      <Routers />
     </div>
   );
 }

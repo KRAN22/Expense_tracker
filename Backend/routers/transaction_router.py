@@ -25,4 +25,10 @@ def get_all_transactions(db:Session=Depends(get_db)):
     loggers.info("Successfully get all Transactions...")
     return result
 
+@router.delete("/deleteTransaction/{id}")
+def delete_transaction(id:int,db:Session=Depends(get_db)):
+    loggers.info("Delete transaction request received....")
+    result = transaction_services.deleteTransaction(id,db)
+    loggers.info("Successfully delete the transaction....")
+    return result
     
