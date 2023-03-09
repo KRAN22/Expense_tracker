@@ -1,7 +1,7 @@
 from database import Base
 from sqlalchemy import String,Column,Integer,ForeignKey,Boolean, Date
 from sqlalchemy.orm import relationship
-import datetime
+
 
 
 class User(Base):
@@ -19,9 +19,10 @@ class Category(Base):
     __tablename__ = "category"
     
     id = Column(Integer,primary_key=True,index= True,autoincrement=True)
+    category_type = Column(String(225))
     categoryName = Column(String(255))
     
-    transaction = relationship("Transaction", back_populates="categories")
+    transaction = relationship("Transaction", back_populates="category")
     
     def __repr__(self):
         return f"<Category {self.categoryName}" 
@@ -36,7 +37,7 @@ class Transaction(Base):
     comments = Column(String(255))
     id_delete = Column(Boolean,default=False)
     
-    categories = relationship("Category", back_populates="transaction")
+    category = relationship("Category", back_populates="transaction")
     
     def __repr__(self):
         return f"<Transaction {self.id}" 

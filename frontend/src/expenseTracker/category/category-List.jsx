@@ -38,6 +38,7 @@ export const CategoryList = () => {
       console.log(e.response.data);
     }
   };
+
   const OnClickEvent = () => {
     setEvent(true);
   };
@@ -81,7 +82,13 @@ export const CategoryList = () => {
                     </Typography>
                     <Divider color={"Black"} />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={3}>
+                    <Typography variant="h6" color={"Blue"}>
+                      CATEGORY_TYPE
+                    </Typography>
+                    <Divider color={"Black"} />
+                  </Grid>
+                  <Grid item xs={3}>
                     <Typography variant="h6" color={"Blue"}>
                       CATEGORYNAME
                     </Typography>
@@ -109,12 +116,22 @@ export const CategoryList = () => {
                       key={item.id}
                       xs={10}
                       margin={"Auto"}
-                      sx={{ textAlign: "center", background: "white" }}
+                      sx={{
+                        textAlign: "center",
+                        background:
+                          item.category_type === "Income" ? "#2E8B57" : "",
+                        color: "white",
+                      }}
                     >
                       <Grid item xs={2}>
                         <Typography variant="h6">{item.id}</Typography>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={3}>
+                        <Typography variant="h6">
+                          {item.category_type}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={3}>
                         <Typography variant="h6">
                           {item.categoryName}
                         </Typography>
@@ -125,12 +142,12 @@ export const CategoryList = () => {
                             onClickEdit(item.categoryName, item.id)
                           }
                         >
-                          <EditIcon />
+                          <EditIcon style={{ color: "white" }} />
                         </Button>
                       </Grid>
                       <Grid item xs={2}>
                         <Button onClick={() => OnClickDelete(item.id)}>
-                          <DeleteTwoToneIcon />
+                          <DeleteTwoToneIcon style={{ color: "white" }} />
                         </Button>
                       </Grid>
                     </Grid>

@@ -7,7 +7,7 @@ from services import transaction_services
 
 
 router = APIRouter(
-    prefix="/app/transaction",
+    prefix="/api/transaction",
     tags=["Transaction"]
 )
 
@@ -31,4 +31,4 @@ def delete_transaction(id:int,db:Session=Depends(get_db)):
     result = transaction_services.deleteTransaction(id,db)
     loggers.info("Successfully delete the transaction....")
     return result
-    
+

@@ -1,5 +1,5 @@
 from fastapi import HTTPException,status
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session,joinedload
 from logger import loggers
 import model
 
@@ -9,9 +9,9 @@ def addTransaction(new_transaction,db:Session):
     db.refresh(new_transaction)
     return new_transaction
 
-def getAppTransactions(db:Session):
-    result = db.query(model.Transaction).all()
-    return result
+def getAllTransactions(db:Session):
+    results = db.query(model.Transaction).options(joinedload(model.Transaction.category)).all()
+    return results
 
 def deleteTransaction(id,db:Session):
     transaction = db.query(model.Transaction).filter(model.Transaction.id == id).first()

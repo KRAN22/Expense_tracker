@@ -13,7 +13,7 @@ export const Transaction = () => {
   }, []);
 
   const getTransaction = async () => {
-    const baseURL = "http://127.0.0.1:8000/app/transaction/";
+    const baseURL = "http://127.0.0.1:8000/api/transaction/";
     try {
       const response = await axios.get(baseURL);
       setList(response.data);
@@ -34,6 +34,7 @@ export const Transaction = () => {
   };
 
   const OnClickDelete = async (id) => {
+    console.log(id);
     const baseURL = `http://127.0.0.1:8000/app/transaction/deleteTransaction/${id}`;
     try {
       const response = await axios.delete(baseURL);
@@ -50,8 +51,8 @@ export const Transaction = () => {
       {event ? (
         <AddTransaction />
       ) : (
-        <Grid container xs={12}>
-          <Grid item container xs={10} p={2} margin={"Auto"}>
+        <Grid container item xs={12} sm={12} md={12}>
+          <Grid item container xs={12} sm={10} md={10} p={2} margin={"Auto"}>
             <Grid item xs={12} sx={{ textAlign: "center" }}>
               <Typography variant="h4">Transaction list</Typography>
             </Grid>
@@ -61,11 +62,13 @@ export const Transaction = () => {
               </Button>
             </Grid>
           </Grid>
-          <Grid item container xs={12}>
+          <Grid item container xs={12} sm={12} md={12}>
             <Grid
               item
               container
-              xs={10}
+              xs={12}
+              sm={11}
+              md={11}
               margin={"Auto"}
               sx={{
                 textAlign: "center",
@@ -114,7 +117,9 @@ export const Transaction = () => {
                   item
                   container
                   key={item.id}
-                  xs={10}
+                  xs={12}
+                  sm={11}
+                  md={11}
                   margin={"Auto"}
                   sx={{ textAlign: "center", background: "white" }}
                 >
@@ -122,7 +127,9 @@ export const Transaction = () => {
                     <Typography variant="h6">{item.id}</Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <Typography variant="h6">{item.category_id}</Typography>
+                    <Typography variant="h6">
+                      {item.category.categoryName}
+                    </Typography>
                   </Grid>
                   <Grid item xs={2}>
                     <Typography variant="h6">{item.amount}</Typography>

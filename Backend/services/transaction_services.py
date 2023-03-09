@@ -23,9 +23,12 @@ def addTransaction(transaction,db):
     
 
 def GetAllTransactions(db):
-    result = transaction_repo.getAppTransactions(db)
+    result = transaction_repo.getAllTransactions(db)
     return result
 
 def deleteTransaction(id,db):
     result = transaction_repo.deleteTransaction(id,db)
     return result
+
+
+    

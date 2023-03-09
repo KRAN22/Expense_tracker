@@ -65,12 +65,14 @@ class SignUp(BaseModel):
 
 class Category(BaseModel):
     
+    category_type : str
     categoryName : str
     
     class Config:
         orm_mode = True
         schema_extra={
             'example':{
+                'category_type': "INCOME",
                 'categoryName':"Home"
             }
         }

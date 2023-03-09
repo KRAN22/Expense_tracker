@@ -11,6 +11,7 @@ def CreateCategory(Category,db):
                             detail="category already excited...")
     
     new_category = model.Category(
+        category_type = Category.category_type,
         categoryName = Category.categoryName
     )
     result = category_repo.createCategory(new_category,db)
