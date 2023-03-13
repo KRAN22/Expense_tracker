@@ -47,7 +47,7 @@ export const AddTransaction = () => {
   };
 
   const SubmitHandler = async () => {
-    const baseURL = "http://127.0.0.1:8000/app/transaction/add_transaction";
+    const baseURL = "http://127.0.0.1:8000/api/transaction/add_transaction";
     const body = { category_id, amount, date, comments };
     try {
       const response = await axios.post(baseURL, body);
@@ -92,7 +92,7 @@ export const AddTransaction = () => {
           <TextField
             fullWidth
             variant="outlined"
-            label="amount"
+            label="Amount"
             type={"number"}
             onChange={onChangeAmount}
           ></TextField>
@@ -109,7 +109,7 @@ export const AddTransaction = () => {
           <TextField
             fullWidth
             variant="outlined"
-            label="comments"
+            label="Comments"
             type={"text"}
             onChange={onChangeComments}
           ></TextField>

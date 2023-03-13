@@ -63,7 +63,7 @@ export const Category = () => {
             <InputLabel id="demo-simple-select-label">Category_Type</InputLabel>
             <Select
               labelId="demo-simple-select-label"
-              label="categoryType"
+              label="CategoryType"
               onChange={handleChange}
             >
               <MenuItem value="Income">INCOME</MenuItem>
@@ -75,7 +75,7 @@ export const Category = () => {
         <Grid item xs={12}>
           <TextField
             fullWidth
-            label="category"
+            label="Category"
             variant="outlined"
             type={"text"}
             onChange={onChangeHandler}

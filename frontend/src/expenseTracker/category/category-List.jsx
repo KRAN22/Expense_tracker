@@ -58,12 +58,16 @@ export const CategoryList = () => {
             <Category />
           ) : (
             <Grid container xs={12}>
-              <Grid item container xs={10} p={2} margin={"Auto"}>
-                <Grid item xs={12} sx={{ textAlign: "center" }}>
+              <Grid item container xs={12} pb={2} margin={"Auto"}>
+                <Grid item xs={12} pb={2} sx={{ textAlign: "center" }}>
                   <Typography variant="h4">Category list</Typography>
                 </Grid>
-                <Grid item xs={12}>
-                  <Button variant="contained" onClick={OnClickEvent}>
+                <Grid item xs={10} margin={"Auto"}>
+                  <Button
+                    sx={{ float: "right" }}
+                    variant="contained"
+                    onClick={OnClickEvent}
+                  >
                     Add Category
                   </Button>
                 </Grid>
@@ -119,7 +123,9 @@ export const CategoryList = () => {
                       sx={{
                         textAlign: "center",
                         background:
-                          item.category_type === "Income" ? "#2E8B57" : "",
+                          item.category_type === "Savings"
+                            ? "#2E8B57"
+                            : "#FF7F50",
                         color: "white",
                       }}
                     >

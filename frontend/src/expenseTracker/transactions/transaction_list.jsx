@@ -35,7 +35,7 @@ export const Transaction = () => {
 
   const OnClickDelete = async (id) => {
     console.log(id);
-    const baseURL = `http://127.0.0.1:8000/app/transaction/deleteTransaction/${id}`;
+    const baseURL = `http://127.0.0.1:8000/api/transaction/deleteTransaction/${id}`;
     try {
       const response = await axios.delete(baseURL);
       if (response) {
@@ -46,18 +46,23 @@ export const Transaction = () => {
     }
   };
 
+  console.log(list);
   return (
     <>
       {event ? (
         <AddTransaction />
       ) : (
         <Grid container item xs={12} sm={12} md={12}>
-          <Grid item container xs={12} sm={10} md={10} p={2} margin={"Auto"}>
+          <Grid item container xs={12} sm={11} md={11} pb={2} margin={"Auto"}>
             <Grid item xs={12} sx={{ textAlign: "center" }}>
               <Typography variant="h4">Transaction list</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" onClick={OnClickEvent}>
+              <Button
+                sx={{ float: "right" }}
+                variant="contained"
+                onClick={OnClickEvent}
+              >
                 Add Transaction
               </Button>
             </Grid>
@@ -76,38 +81,40 @@ export const Transaction = () => {
                 boxSizing: "border-box",
               }}
             >
-              <Grid item xs={1}>
-                <Typography variant="h6" color={"Blue"}>
-                  ID
+              <Grid item xs={2}>
+                <Typography p={1} variant="h6" color={"Blue"}>
+                  CATEGORY
                 </Typography>
                 <Divider color={"black"} />
               </Grid>
               <Grid item xs={2}>
-                <Typography variant="h6" color={"Blue"}>
-                  CATE_ID
+                <Typography p={1} variant="h6" color={"Blue"}>
+                  TYPE
                 </Typography>
                 <Divider color={"black"} />
               </Grid>
               <Grid item xs={2}>
-                <Typography variant="h6" color={"Blue"}>
+                <Typography p={1} variant="h6" color={"Blue"}>
                   AMOUNT
                 </Typography>
                 <Divider color={"black"} />
               </Grid>
-              <Grid item xs={2.5}>
-                <Typography variant="h6" color={"Blue"}>
+              <Grid item xs={2}>
+                <Typography p={1} variant="h6" color={"Blue"}>
                   DATE
                 </Typography>
                 <Divider color={"black"} />
               </Grid>
-              <Grid item xs={3}>
-                <Typography variant="h6" color={"Blue"}>
+              <Grid item xs={2}>
+                <Typography p={1} variant="h6" color={"Blue"}>
                   COMMENTS
                 </Typography>
                 <Divider color={"black"} />
               </Grid>
-              <Grid item xs={1.5} color={"Blue"}>
-                <Typography variant="h6">DELETE</Typography>
+              <Grid item xs={2} color={"Blue"} boxSizing={"border-box"}>
+                <Typography pb={1} pt={1} variant="h6">
+                  DELETE
+                </Typography>
                 <Divider color={"black"} />
               </Grid>
             </Grid>
@@ -121,30 +128,39 @@ export const Transaction = () => {
                   sm={11}
                   md={11}
                   margin={"Auto"}
-                  sx={{ textAlign: "center", background: "white" }}
+                  sx={{
+                    textAlign: "center",
+                    background:
+                      item.category.category_type === "Savings"
+                        ? "#2E8B57"
+                        : "#FF7F50",
+                    color: "white",
+                  }}
                 >
-                  <Grid item xs={1}>
-                    <Typography variant="h6">{item.id}</Typography>
-                  </Grid>
                   <Grid item xs={2}>
                     <Typography variant="h6">
                       {item.category.categoryName}
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
+                    <Typography variant="h6">
+                      {item.category.category_type}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2}>
                     <Typography variant="h6">{item.amount}</Typography>
                   </Grid>
-                  <Grid item xs={2.5}>
+                  <Grid item xs={2}>
                     <Typography variant="h6">
                       {getDateFormat(item.date)}
                     </Typography>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={2}>
                     <Typography variant="h6">{item.comments}</Typography>
                   </Grid>
-                  <Grid item xs={1.5}>
+                  <Grid item xs={2}>
                     <Button onClick={() => OnClickDelete(item.id)}>
-                      <DeleteTwoToneIcon />
+                      <DeleteTwoToneIcon sx={{ color: "white" }} />
                     </Button>
                   </Grid>
                 </Grid>
