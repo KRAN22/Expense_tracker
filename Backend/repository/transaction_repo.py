@@ -13,6 +13,12 @@ def getAllTransactions(db:Session):
     results = db.query(model.Transaction).options(joinedload(model.Transaction.category)).all()
     return results
 
+def getTransactionById(id,db:Session):
+    queries = []
+    queries.append(model.Transaction.id == id)
+    result = db.query(model.Transaction).filter(*queries).first()
+    return result
+
 def deleteTransaction(id,db:Session):
     transaction = db.query(model.Transaction).filter(model.Transaction.id == id).first()
     if not transaction:
@@ -23,3 +29,9 @@ def deleteTransaction(id,db:Session):
     db.delete(transaction)
     db.commit()
     return status.HTTP_204_NO_CONTENT
+
+def updateTransaction(transaction,db:Session):
+    db.commit()
+    db.refresh(transaction) 
+    return transaction
+    

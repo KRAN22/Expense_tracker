@@ -95,3 +95,21 @@ class Transaction(BaseModel):
                 'comments': "add something" 
             }
         }
+        
+       
+class UpdateTransaction(BaseModel):
+    
+    amount : Optional[int]
+    date: Optional[date]
+    comments : Optional[str]
+    is_delete: Optional[bool]
+    
+    class Config:
+        orm_mode = True
+        schema_extra = {
+            'example':{
+                'amount': 230,
+                'date' : date(2022,2,1),
+                'comments': "add something" 
+            }
+        }

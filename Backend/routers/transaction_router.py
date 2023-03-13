@@ -1,7 +1,7 @@
 from fastapi import APIRouter,Depends
 from database import get_db
 from sqlalchemy.orm import Session
-from schemas import Transaction
+from schemas import Transaction,UpdateTransaction
 from logger import loggers
 from services import transaction_services
 
@@ -32,3 +32,10 @@ def delete_transaction(id:int,db:Session=Depends(get_db)):
     loggers.info("Successfully delete the transaction....")
     return result
 
+@router.put("/editTransaction/{id}")
+def update_transaction(id:int,transaction :UpdateTransaction,db:Session=Depends(get_db)):
+    loggers.info("put transaction request received....")
+    result = transaction_services.updateTransaction(id,transaction,db)
+    loggers.info("Successfully edit transaction...")
+    return result
+    

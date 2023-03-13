@@ -39,7 +39,14 @@ export const ExpenseTracker = () => {
           </Grid>
           <Grid item xs={1} sx={{ margin: "Auto" }}>
             <Button onClick={clear} variant="contained">
-              <Link to={"/"} style={{ textDecoration: "none" }}>
+              <Link
+                to={"/"}
+                style={{
+                  textDecoration: "none",
+                  color: "White",
+                  fontWeight: "Bold",
+                }}
+              >
                 LogOut
               </Link>
             </Button>

@@ -30,5 +30,23 @@ def deleteTransaction(id,db):
     result = transaction_repo.deleteTransaction(id,db)
     return result
 
+def updateTransaction(id,transaction,db):
+    current_transaction = transaction_repo.getTransactionById(id,db)
+    if not current_transaction:
+        loggers.error(f"With the id {id} the transaction is not found..")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"With the id {id} the transaction not found ")
 
+    if transaction.amount:
+        current_transaction.amount = transaction.amount
+        
+    if transaction.date:
+        current_transaction.date = transaction.date
+        
+    if transaction.comments:
+        current_transaction.comments = transaction.comments
+    
+    result = transaction_repo.updateTransaction(current_transaction,db)
+    return result
+    
     
