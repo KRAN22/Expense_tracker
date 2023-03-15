@@ -14,6 +14,7 @@ export const Transaction = () => {
   const [date, setDate] = useState();
   const [comments, setComments] = useState("");
   const [id, setId] = useState();
+  const [categoryType, setCategoryType] = useState();
 
   useEffect(() => {
     getTransaction();
@@ -53,18 +54,21 @@ export const Transaction = () => {
     }
   };
 
-  const onClickEdit = (amount, date, comments, id) => {
+  const onClickEdit = (amount, date, comments, id, categoryType) => {
     setEdit(true);
     setAmount(amount);
     setComments(comments);
     setDate(date);
     setId(id);
+    setCategoryType(categoryType);
   };
 
   return (
     <>
       {edit ? (
-        <EditTransaction transaction={{ amount, date, comments, id }} />
+        <EditTransaction
+          transaction={{ amount, date, comments, id, categoryType }}
+        />
       ) : (
         <>
           {event ? (
@@ -197,7 +201,8 @@ export const Transaction = () => {
                               item.amount,
                               item.date,
                               item.comments,
-                              item.id
+                              item.id,
+                              item.category.category_type
                             )
                           }
                         >

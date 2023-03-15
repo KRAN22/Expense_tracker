@@ -99,6 +99,7 @@ class Transaction(BaseModel):
        
 class UpdateTransaction(BaseModel):
     
+    category_type : Optional[str]
     amount : Optional[int]
     date: Optional[date]
     comments : Optional[str]

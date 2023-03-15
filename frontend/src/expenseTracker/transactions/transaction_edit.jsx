@@ -1,12 +1,23 @@
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 
-export const EditTransaction = (props) => {
-  const transaction = props.transaction;
-  const [amount, setAmount] = useState(transaction.amount);
+export const EditTransaction = ({ transaction }) => {
+  const id = transaction.id;
+  console.log(transaction.list);
+  const [amount, setAmount] = useState(transaction?.amount);
   const [date, setDate] = useState(transaction.date);
   const [comments, setComments] = useState(transaction.comments);
+  const [category_type, setCategory_type] = useState(transaction.categoryType);
 
   const onChangeAmount = (e) => {
     setAmount(e.target.value);
@@ -17,10 +28,16 @@ export const EditTransaction = (props) => {
   const onChangeComments = (e) => {
     setComments(e.target.value);
   };
+  const onChangeCategoryType = (e) => {
+    setCategory_type(e.target.value);
+  };
 
-  const SubmitHandler = async (id) => {
+  const SubmitHandler = async () => {
     const baseUrl = `http://127.0.0.1:8000/api/transaction/editTransaction/${id}`;
-    const body = { amount, date, comments };
+    const body = { amount: +amount, date, comments, category_type };
+
+    console.log({ baseUrl, body });
+
     try {
       const response = await axios.put(baseUrl, body);
       if (response) {
@@ -36,15 +53,29 @@ export const EditTransaction = (props) => {
       item
       container
       p={2}
-      xs={9}
+      xs={5}
       height={"90vh"}
-      width={"30%"}
       margin="auto"
       mt={"30px"}
       sx={{ background: "#e3e3e3", borderRadius: "20px" }}
     >
       <Grid item xs={12} pt={"50px"} sx={{ textAlign: "center" }}>
         <Typography variant="h5">Edit your Transaction</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">CategoryType</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="categoryType"
+            onChange={onChangeCategoryType}
+          >
+            <MenuItem value="Income">INCOME</MenuItem>
+            <MenuItem value="Expense">EXPENSE</MenuItem>
+            <MenuItem value="Savings">SAVINGS</MenuItem>
+          </Select>
+        </FormControl>
       </Grid>
       <Grid item xs={12}>
         <TextField

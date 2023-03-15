@@ -45,6 +45,9 @@ def updateTransaction(id,transaction,db):
         
     if transaction.comments:
         current_transaction.comments = transaction.comments
+        
+    if transaction.category_type:
+        current_transaction.category.category_type = transaction.category_type
     
     result = transaction_repo.updateTransaction(current_transaction,db)
     return result
