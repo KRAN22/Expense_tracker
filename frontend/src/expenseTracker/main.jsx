@@ -36,6 +36,14 @@ export const ExpenseTracker = () => {
                 Transaction
               </Link>
             </Button>
+            <Button>
+              <Link
+                to={"/expenseTracker/summary"}
+                style={{ textDecoration: "none" }}
+              >
+                Summary
+              </Link>
+            </Button>
           </Grid>
           <Grid item xs={1} sx={{ margin: "Auto" }}>
             <Button onClick={clear} variant="contained">

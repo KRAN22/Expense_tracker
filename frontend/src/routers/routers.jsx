@@ -6,6 +6,7 @@ import { ExpenseTracker } from "../expenseTracker/main";
 import { ProtectedRout } from "../protectedRout";
 import { CategoryList } from "../expenseTracker/category/category-List";
 import { Transaction } from "../expenseTracker/transactions/transaction_list";
+import { Summary } from "../expenseTracker/summary/summary";
 
 export const Routers = () => {
   return (
@@ -20,6 +21,7 @@ export const Routers = () => {
               path="/expenseTracker/transaction"
               element={<Transaction />}
             />
+            <Route path="/expenseTracker/summary" element={<Summary />} />
           </Route>
         </Route>
       </Routes>
