@@ -114,3 +114,17 @@ class UpdateTransaction(BaseModel):
                 'comments': "add something" 
             }
         }
+        
+class Summary(BaseModel):
+    
+    start_date = date
+    end_date = date
+    
+    class Config:
+        orm_mode = True
+        schema_extra={
+            'example':{
+            'start_date' : date(2023,3,1),
+            'end_date' : date(2023,3,30)
+            }
+        }
