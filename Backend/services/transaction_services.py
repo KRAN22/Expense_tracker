@@ -52,4 +52,6 @@ def updateTransaction(id,transaction,db):
     result = transaction_repo.updateTransaction(current_transaction,db)
     return result
     
-    
+def filterTransaction(start_date,end_date,db):
+    result = transaction_repo.filterTransaction(start_date,end_date,db)
+    return result

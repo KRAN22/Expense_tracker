@@ -35,3 +35,6 @@ def updateTransaction(transaction,db:Session):
     db.refresh(transaction) 
     return transaction
     
+def filterTransaction(start_date,end_date,db:Session):
+    transactions = db.query(model.Transaction).filter(model.Transaction.date.between(start_date, end_date)).all()
+    return transactions

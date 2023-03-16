@@ -39,3 +39,9 @@ def update_transaction(id:int,transaction :UpdateTransaction,db:Session=Depends(
     loggers.info("Successfully edit transaction...")
     return result
     
+@router.get("/filterTransaction")
+def filter_transaction(start_date:str,end_date:str,db:Session=Depends(get_db)):
+    loggers.info("get filter Transaction request received...")
+    result = transaction_services.filterTransaction(start_date,end_date,db)
+    loggers.info("Successfully get all filter transaction....")
+    return result
