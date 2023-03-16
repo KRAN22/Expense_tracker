@@ -169,7 +169,9 @@ export const Transaction = () => {
                         background:
                           item.category.category_type === "Savings"
                             ? "#2E8B57"
-                            : "#FF7F50",
+                            : item.category.category_type === "Expense"
+                            ? "#FF7F50"
+                            : "#000000",
                         color: "white",
                       }}
                     >

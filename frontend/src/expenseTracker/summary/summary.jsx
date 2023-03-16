@@ -1,87 +1,29 @@
-import { Button, Grid, TextField, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import { Button, Divider, Grid, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 import axios from "axios";
 
 export const Summary = () => {
-  const [toDate, setToDate] = useState();
-  const [fromDate, setFromDate] = useState();
+  const [start_date, setStart_date] = useState();
+  const [end_date, setEnd_date] = useState();
   const [list, setList] = useState([]);
-  const [summaryList, setSummaryList] = useState([]);
 
-  useEffect(() => {
-    getTransaction();
-  }, []);
-
-  const getTransaction = async () => {
-    const baseURL = "http://127.0.0.1:8000/api/transaction/";
+  const onSearch = async () => {
+    const baseURL = `http://127.0.0.1:8000/api/summary/?start_date=${start_date}&end_date=${end_date}`;
     try {
       const response = await axios.get(baseURL);
+      console.log(response.data.categorySummary);
       setList(response.data);
     } catch (e) {
       console.log(e.response.data);
     }
   };
 
-  const onSearch = () => {
-    const startDate = new Date(toDate);
-    const endDate = new Date(fromDate);
-
-    const from = startDate.getTime();
-    const to = endDate.getTime();
-
-    // Filter records within the date range
-    const filteredRecords = list.filter((record) => {
-      const recordDate = new Date(record.date);
-      return recordDate.getTime() >= from && recordDate.getTime() <= to;
-    });
-
-    // const categoryNames = filteredRecords.map(
-    //   (item) => item.category.categoryName
-    // );
-
-    const resultList = [];
-    // Log the filtered records
-    const salaryResult = filteredRecords.reduce(
-      (acc, item) => {
-        if (item.category.categoryName === "salary") {
-          return {
-            amount: acc.amount + item.amount,
-            category_type: item.category.category_type,
-            categoryName: item.category.categoryName,
-          };
-        } else {
-          return acc;
-        }
-      },
-      { amount: 0 }
-    );
-    console.log(salaryResult);
-    resultList.push(salaryResult);
-
-    const stocksResult = filteredRecords.reduce(
-      (acc, item) => {
-        if (item.category.categoryName === "stocks") {
-          return {
-            amount: acc.amount + item.amount,
-            category_type: item.category.category_type,
-            categoryName: item.category.categoryName,
-          };
-        } else {
-          return acc;
-        }
-      },
-      { amount: 0 }
-    );
-    resultList.push(stocksResult);
-    setSummaryList(resultList);
-  };
-
   const onChangeToDate = (e) => {
-    setToDate(e.target.value);
+    setStart_date(e.target.value);
   };
 
   const onChangeFromDate = (e) => {
-    setFromDate(e.target.value);
+    setEnd_date(e.target.value);
   };
 
   return (
@@ -90,7 +32,7 @@ export const Summary = () => {
         item
         container
         xs={11}
-        pb={5}
+        p={2}
         sx={{ background: "white", borderRadius: "20px" }}
         margin={"Auto"}
       >
@@ -135,27 +77,46 @@ export const Summary = () => {
             </Button>
           </Grid>
         </Grid>
-        <Grid item container xs={12} p={2}>
-          <Grid item xs={4} p={2} border={"1px solid"} textAlign={"center"}>
+        <Grid item container xs={12} pt={2}>
+          <Grid item xs={4} pt={2} textAlign={"center"}>
             <Typography>CATEGORY</Typography>
+            <Divider color={"black"} />
           </Grid>
-          <Grid item xs={4} p={2} border={"1px solid"} textAlign={"center"}>
+          <Grid item xs={4} pt={2} textAlign={"center"}>
             <Typography>TYPE</Typography>
+            <Divider color={"black"} />
           </Grid>
-          <Grid item xs={4} p={2} border={"1px solid"} textAlign={"center"}>
+          <Grid item xs={4} pt={2} textAlign={"center"}>
             <Typography>Amount</Typography>
+            <Divider color={"black"} />
           </Grid>
         </Grid>
-        {summaryList.map((item) => {
+        {list.categorySummary?.map((item) => {
           return (
-            <Grid item container key={""} xs={12} p={2}>
-              <Grid item xs={4} textAlign={"center"}>
+            <Grid
+              item
+              container
+              key={item.id}
+              xs={12}
+              p={1}
+              sx={{
+                textAlign: "center",
+                background:
+                  item.category_type === "Savings"
+                    ? "#2E8B57"
+                    : item.category_type === "Expense"
+                    ? "#FF7F50"
+                    : "#000000",
+                color: "white",
+              }}
+            >
+              <Grid item xs={4}>
                 <Typography>{item.categoryName}</Typography>
               </Grid>
-              <Grid item xs={4} textAlign={"center"}>
+              <Grid item xs={4}>
                 <Typography>{item.category_type}</Typography>
               </Grid>
-              <Grid item xs={4} textAlign={"center"}>
+              <Grid item xs={4}>
                 <Typography>{item.amount}</Typography>
               </Grid>
             </Grid>
