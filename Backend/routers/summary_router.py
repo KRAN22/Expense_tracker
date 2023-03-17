@@ -1,7 +1,8 @@
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session 
-from routers import transaction_router,category_router
+from services import summary_service
 from database import get_db
+from logger import loggers
 
 
 router = APIRouter(
@@ -10,21 +11,15 @@ router = APIRouter(
 )
 
 @router.get("/")
-def get_summary(start_date:str,end_date:str,db:Session=Depends(get_db)):
-    categories = category_router.get_all_categories(db)
-    transactions_db = transaction_router.filter_transaction(start_date,end_date,db)
-    categorySummary = []
-    for category in categories:
-        acc = 0
-        for transaction in transactions_db:
-            if transaction.category_id == category.id:
-                acc += transaction.amount
-        categorySummary.append({
-        "id":category.id,
-        "categoryName": category.categoryName,
-        "category_type": category.category_type,
-        "amount": acc
-        })
-            
-    return {"categorySummary": categorySummary}
+def get_summary_BasedOn_category(start_date:str,end_date:str,db:Session=Depends(get_db)):
+    loggers.info("get Summary request received.....")
+    result = summary_service.getSummary(start_date,end_date,db)
+    loggers.info("Successfully get summary....")
+    return result
     
+@router.get("/all")
+def get_Summary_BasedOn_category_type(db:Session=Depends(get_db)):
+    loggers.info("Get summary based on category_type....")
+    result = summary_service.getSummaryBasedOnCategoryType(db)
+    loggers.info("Successfully get based on category_type...")
+    return result 

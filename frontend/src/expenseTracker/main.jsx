@@ -9,8 +9,18 @@ export const ExpenseTracker = () => {
     window.localStorage.clear();
   };
   return (
-    <Grid sx={{ height: "100vh" }} container xs={12}>
-      <Grid container item xs={2} sx={{ background: "white" }}>
+    <Grid
+      sx={{ height: "100vh", display: "flex", overflow: "hidden" }}
+      container
+      xs={12}
+    >
+      <Grid
+        container
+        item
+        xs={2}
+        sx={{ background: "white", overflow: "auto" }}
+        height={"100%"}
+      >
         <Grid container item xs={12} direction="column">
           <Grid container item xs={3} direction="column" margin={"auto"}>
             <Box className="ex-image">
@@ -61,8 +71,14 @@ export const ExpenseTracker = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={10} sx={{ background: "lightgray" }}>
-        <Outlet />
+      <Grid
+        item
+        xs={10}
+        sx={{ height: "100vh", background: "lightgray", overflowY: "scroll" }}
+      >
+        <Box pb={4}>
+          <Outlet />
+        </Box>
       </Grid>
     </Grid>
   );

@@ -74,7 +74,15 @@ export const Transaction = () => {
           {event ? (
             <AddTransaction />
           ) : (
-            <Grid container item xs={12} sm={12} md={12}>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              height={"100%"}
+              overflowY={"scroll"}
+            >
               <Grid
                 item
                 container
