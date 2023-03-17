@@ -17,9 +17,3 @@ def get_summary_BasedOn_category(start_date:str,end_date:str,db:Session=Depends(
     loggers.info("Successfully get summary....")
     return result
     
-@router.get("/all")
-def get_Summary_BasedOn_category_type(db:Session=Depends(get_db)):
-    loggers.info("Get summary based on category_type....")
-    result = summary_service.getSummaryBasedOnCategoryType(db)
-    loggers.info("Successfully get based on category_type...")
-    return result 

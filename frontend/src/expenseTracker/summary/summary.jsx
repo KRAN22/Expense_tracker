@@ -1,6 +1,7 @@
 import { Button, Divider, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
+import { SummaryCategoryType } from "./summary_category_type";
 
 export const Summary = () => {
   const [start_date, setStart_date] = useState();
@@ -11,7 +12,6 @@ export const Summary = () => {
     const baseURL = `http://127.0.0.1:8000/api/summary/?start_date=${start_date}&end_date=${end_date}`;
     try {
       const response = await axios.get(baseURL);
-      console.log(response.data.categorySummary);
       setList(response.data);
     } catch (e) {
       console.log(e.response.data);
@@ -55,6 +55,7 @@ export const Summary = () => {
             <Typography>From Date</Typography>
             <TextField fullWidth onChange={onChangeFromDate} type={"date"} />
           </Grid>
+
           <Grid
             item
             xs={2}
@@ -77,17 +78,18 @@ export const Summary = () => {
             </Button>
           </Grid>
         </Grid>
+        <SummaryCategoryType list={list.overAllSummary} />
         <Grid item container xs={12} pt={2}>
           <Grid item xs={4} pt={2} textAlign={"center"}>
-            <Typography>CATEGORY</Typography>
+            <Typography fontWeight={"Bold"}>CATEGORY</Typography>
             <Divider color={"black"} />
           </Grid>
           <Grid item xs={4} pt={2} textAlign={"center"}>
-            <Typography>TYPE</Typography>
+            <Typography fontWeight={"Bold"}>TYPE</Typography>
             <Divider color={"black"} />
           </Grid>
           <Grid item xs={4} pt={2} textAlign={"center"}>
-            <Typography>Amount</Typography>
+            <Typography fontWeight={"Bold"}>Amount</Typography>
             <Divider color={"black"} />
           </Grid>
         </Grid>
@@ -117,7 +119,7 @@ export const Summary = () => {
                 <Typography>{item.category_type}</Typography>
               </Grid>
               <Grid item xs={4}>
-                <Typography>{item.amount}</Typography>
+                <Typography>${item.amount}</Typography>
               </Grid>
             </Grid>
           );

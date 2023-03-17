@@ -16,26 +16,21 @@ def getSummary(start_date,end_date,db):
         "category_type": category.category_type,
         "amount": acc
         })
-            
-    return {"categorySummary": categorySummary}
-
-def getSummaryBasedOnCategoryType(db):
-    categories = category_router.get_all_categories(db)
-    transactions_db = transaction_router.get_all_transactions(db)
+     
     category_type = []
     for category in categories:
         if category.category_type not in category_type:
             category_type.append(category.category_type)
     
-    categorySummary = []
+    overAllSummary = []
     for types in category_type:
         acc = 0
         for transaction in transactions_db:
             if transaction.category.category_type == types:
                 acc += transaction.amount
-        categorySummary.append({
+        overAllSummary.append({
         "category_type": types,
         "amount": acc
         })
-    
-    return {"categorySummary":categorySummary} 
+            
+    return {"categorySummary": categorySummary,"overAllSummary":overAllSummary}
