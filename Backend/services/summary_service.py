@@ -32,5 +32,11 @@ def getSummary(start_date,end_date,db):
         "category_type": types,
         "amount": acc
         })
-            
-    return {"categorySummary": categorySummary,"overAllSummary":overAllSummary}
+        
+    total_income = sum(item["amount"] for item in overAllSummary if item["category_type"] == "Income")
+    total_savings = sum(item["amount"] for item in overAllSummary if item["category_type"] == "Savings")
+    total_expense = sum(item["amount"] for item in overAllSummary if item["category_type"] == "Expense")
+    
+    bank_balance = total_income-total_expense-total_savings
+     
+    return {"categorySummary": categorySummary,"overAllSummary":overAllSummary,"bankBalance":bank_balance}

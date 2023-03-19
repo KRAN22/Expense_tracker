@@ -62,7 +62,7 @@ export const CategoryList = () => {
                 <Grid item xs={12} pb={2} sx={{ textAlign: "center" }}>
                   <Typography variant="h4">Category list</Typography>
                 </Grid>
-                <Grid item xs={10} margin={"Auto"}>
+                <Grid id item xs={10} margin={"Auto"}>
                   <Button
                     sx={{ float: "right" }}
                     variant="contained"

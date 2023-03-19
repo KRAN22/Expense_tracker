@@ -2,12 +2,16 @@ import { Grid, Typography, Divider } from "@mui/material";
 
 export const SummaryCategoryType = (props) => {
   const list = props.list;
-
   return (
-    <Grid container xs={6} margin={"Auto"}>
-      <Grid item xs={12} textAlign={"center"}>
-        <Typography variant="h5" fontWeight={"Bold"}>
-          Category_Type Summary
+    <Grid container xs={6} p={2}>
+      <Grid item xs={12}>
+        <Typography
+          variant="h5"
+          color={"orangered"}
+          sx={{ textDecoration: "underline" }}
+          fontWeight={"Bold"}
+        >
+          OverAll Summary
         </Typography>
       </Grid>
       <Grid item container xs={12} margin={"Auto"} pt={3}>
@@ -25,6 +29,7 @@ export const SummaryCategoryType = (props) => {
           <Grid
             item
             container
+            key={item.category_type}
             xs={12}
             margin={"Auto"}
             p={2}
