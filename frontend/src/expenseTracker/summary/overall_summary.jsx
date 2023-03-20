@@ -36,12 +36,12 @@ export const SummaryCategoryType = (props) => {
             sx={{
               textAlign: "center",
               background:
-                item.category_type === "Savings"
-                  ? "#2E8B57"
-                  : item.category_type === "Expense"
-                  ? "#FF7F50"
-                  : "#000000",
-              color: "white",
+                item.category.category_type === "Savings"
+                  ? "#A8A9AD"
+                  : item.category.category_type === "Expense"
+                  ? "#AFB1AE"
+                  : "#D8D8D8",
+              color: "black",
             }}
           >
             <Grid item xs={6} textAlign={"center"}>

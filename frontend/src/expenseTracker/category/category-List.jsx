@@ -58,9 +58,9 @@ export const CategoryList = () => {
             <Category />
           ) : (
             <Grid container xs={12}>
-              <Grid item container xs={12} pb={2} margin={"Auto"}>
-                <Grid item xs={12} pb={2} sx={{ textAlign: "center" }}>
-                  <Typography variant="h4">Category list</Typography>
+              <Grid item container xs={12} p={2} margin={"Auto"}>
+                <Grid item xs={12} p={3} sx={{ textAlign: "center" }}>
+                  <Typography variant="h4">Category List</Typography>
                 </Grid>
                 <Grid id item xs={10} margin={"Auto"}>
                   <Button
@@ -78,37 +78,36 @@ export const CategoryList = () => {
                   container
                   xs={10}
                   margin={"Auto"}
-                  sx={{ textAlign: "center", background: "white" }}
+                  sx={{
+                    textAlign: "center",
+                    background: "white",
+                    border: "2px solid black",
+                  }}
                 >
-                  <Grid item xs={2}>
+                  <Grid item xs={2} p={1}>
                     <Typography variant="h6" color={"Blue"}>
                       ID
                     </Typography>
-                    <Divider color={"Black"} />
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={3} p={1}>
                     <Typography variant="h6" color={"Blue"}>
                       CATEGORY_TYPE
                     </Typography>
-                    <Divider color={"Black"} />
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={3} p={1}>
                     <Typography variant="h6" color={"Blue"}>
                       CATEGORYNAME
                     </Typography>
-                    <Divider color={"Black"} />
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={2} p={1}>
                     <Typography variant="h6" color={"Blue"}>
                       EDIT
                     </Typography>
-                    <Divider color={"Black"} />
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={2} p={1}>
                     <Typography variant="h6" color={"Blue"}>
                       DELETE
                     </Typography>
-                    <Divider color={"Black"} />
                   </Grid>
                 </Grid>
                 <Divider color={"red"} />
@@ -124,11 +123,11 @@ export const CategoryList = () => {
                         textAlign: "center",
                         background:
                           item.category_type === "Savings"
-                            ? "#2E8B57"
+                            ? "#A8A9AD"
                             : item.category_type === "Expense"
-                            ? "#FF7F50"
-                            : "#000000",
-                        color: "white",
+                            ? "#AFB1AE"
+                            : "#D8D8D8",
+                        color: "black",
                       }}
                     >
                       <Grid item xs={2}>

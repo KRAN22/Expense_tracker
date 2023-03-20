@@ -1,10 +1,11 @@
-import { Button, Divider, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AddTransaction } from "./transaction_add";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
 import { EditTransaction } from "./transaction_edit";
+import { TransactionPagination } from "./pagination";
 
 export const Transaction = () => {
   const [list, setList] = useState([]);
@@ -15,6 +16,8 @@ export const Transaction = () => {
   const [comments, setComments] = useState("");
   const [id, setId] = useState();
   const [categoryType, setCategoryType] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(10);
 
   useEffect(() => {
     getTransaction();
@@ -63,6 +66,11 @@ export const Transaction = () => {
     setCategoryType(categoryType);
   };
 
+  const lastPostIndex = currentPage * postPerPage;
+  const firstPostIndex = lastPostIndex - postPerPage;
+
+  const currentPost = list.slice(firstPostIndex, lastPostIndex);
+
   return (
     <>
       {edit ? (
@@ -93,7 +101,9 @@ export const Transaction = () => {
                 margin={"Auto"}
               >
                 <Grid item xs={12} sx={{ textAlign: "center" }}>
-                  <Typography variant="h4">Transaction list</Typography>
+                  <Typography variant="h4" p={2}>
+                    Transaction List
+                  </Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Button
@@ -117,52 +127,46 @@ export const Transaction = () => {
                     textAlign: "center",
                     background: "white",
                     boxSizing: "border-box",
+                    border: "2px solid black",
                   }}
                 >
                   <Grid item xs={2}>
                     <Typography p={1} variant="h6" color={"Blue"}>
                       CATEGORY
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                   <Grid item xs={1}>
                     <Typography p={1} variant="h6" color={"Blue"}>
                       TYPE
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                   <Grid item xs={2}>
                     <Typography p={1} variant="h6" color={"Blue"}>
                       AMOUNT
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                   <Grid item xs={2}>
                     <Typography p={1} variant="h6" color={"Blue"}>
                       DATE
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                   <Grid item xs={2}>
                     <Typography p={1} variant="h6" color={"Blue"}>
                       COMMENTS
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                   <Grid item xs={1}>
                     <Typography p={1} variant="h6" color={"Blue"}>
                       EDIT
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                   <Grid item xs={2} color={"Blue"} boxSizing={"border-box"}>
                     <Typography pb={1} pt={1} variant="h6">
                       DELETE
                     </Typography>
-                    <Divider color={"black"} />
                   </Grid>
                 </Grid>
-                {list.map((item) => {
+                {currentPost?.map((item) => {
                   return (
                     <Grid
                       item
@@ -176,11 +180,11 @@ export const Transaction = () => {
                         textAlign: "center",
                         background:
                           item.category.category_type === "Savings"
-                            ? "#2E8B57"
+                            ? "#A8A9AD"
                             : item.category.category_type === "Expense"
-                            ? "#FF7F50"
-                            : "#000000",
-                        color: "white",
+                            ? "#AFB1AE"
+                            : "#D8D8D8",
+                        color: "black",
                       }}
                     >
                       <Grid item xs={2}>
@@ -227,6 +231,13 @@ export const Transaction = () => {
                     </Grid>
                   );
                 })}
+                <Grid item xs={5} p={2} margin={"Auto"}>
+                  <TransactionPagination
+                    totalPosts={list.length}
+                    postPerPage={postPerPage}
+                    setCurrentPage={setCurrentPage}
+                  />
+                </Grid>
               </Grid>
             </Grid>
           )}

@@ -18,7 +18,10 @@ export const ExpenseTracker = () => {
         container
         item
         xs={2}
-        sx={{ background: "white", overflow: "auto" }}
+        sx={{
+          background: "white",
+          borderRight: "1px solid lightgray",
+        }}
         height={"100%"}
       >
         <Grid container item xs={12} direction="column">
@@ -74,7 +77,10 @@ export const ExpenseTracker = () => {
       <Grid
         item
         xs={10}
-        sx={{ height: "100vh", background: "lightgray", overflowY: "scroll" }}
+        sx={{
+          height: "100vh",
+          background: "white",
+        }}
       >
         <Box pb={4}>
           <Outlet />
