@@ -39,4 +39,8 @@ In this module you can add your Transaction and you can edit and delete your tra
 
 ### Summary
 
-In this module you fetch Your overAll Summary and Category wise summary and Your bankBalance also in between your respective dates...
+In this module you fetch Your overAll Summary and Category wise summary and Your bankBalance also in between your respective dates like this...
+
+![Screenshot (75)](https://user-images.githubusercontent.com/91652767/227127490-f0def90b-8514-472a-a2d2-4328360c40b6.png)
+
+![Screenshot (76)](https://user-images.githubusercontent.com/91652767/227127506-acca0322-8df5-4ade-9eec-0401cb5c4f23.png)
