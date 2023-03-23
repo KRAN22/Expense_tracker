@@ -16,18 +16,20 @@ export const Transaction = () => {
   const [comments, setComments] = useState("");
   const [id, setId] = useState();
   const [categoryType, setCategoryType] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(10);
+  const [page, setPage] = useState(2);
+  const [limit, setLimitPage] = useState(10);
+  const [totalPosts, setTotalPosts] = useState();
 
   useEffect(() => {
     getTransaction();
-  }, []);
+  }, [page]);
 
   const getTransaction = async () => {
-    const baseURL = "http://127.0.0.1:8000/api/transaction/";
+    const baseURL = `http://127.0.0.1:8000/api/transaction/?limit=${limit}&page=${page}`;
     try {
       const response = await axios.get(baseURL);
-      setList(response.data);
+      setTotalPosts(response.data.count);
+      setList(response.data.date);
     } catch (e) {
       console.log(e.response.data);
     }
@@ -65,11 +67,6 @@ export const Transaction = () => {
     setId(id);
     setCategoryType(categoryType);
   };
-
-  const lastPostIndex = currentPage * postPerPage;
-  const firstPostIndex = lastPostIndex - postPerPage;
-
-  const currentPost = list.slice(firstPostIndex, lastPostIndex);
 
   return (
     <>
@@ -166,7 +163,7 @@ export const Transaction = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                {currentPost?.map((item) => {
+                {list?.map((item) => {
                   return (
                     <Grid
                       item
@@ -233,9 +230,9 @@ export const Transaction = () => {
                 })}
                 <Grid item xs={5} p={2} margin={"Auto"}>
                   <TransactionPagination
-                    totalPosts={list.length}
-                    postPerPage={postPerPage}
-                    setCurrentPage={setCurrentPage}
+                    totalPosts={totalPosts}
+                    limit={limit}
+                    setPage={setPage}
                   />
                 </Grid>
               </Grid>

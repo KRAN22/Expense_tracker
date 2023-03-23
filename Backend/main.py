@@ -37,3 +37,4 @@ app.include_router(auth_router.router)
 app.include_router(category_router.router)
 app.include_router(transaction_router.router)
 app.include_router(summary_router.router)
+

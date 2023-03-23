@@ -35,6 +35,11 @@ def updateTransaction(transaction,db:Session):
     db.refresh(transaction) 
     return transaction
     
-def filterTransaction(start_date,end_date,db:Session):
-    transactions = db.query(model.Transaction).filter(model.Transaction.date.between(start_date, end_date)).all()
+def filterTransaction(start_date,end_date,limit ,page,db:Session):  
+    offset = (page - 1) * limit
+    transactions = db.query(model.Transaction).options(joinedload(model.Transaction.category)).filter(model.Transaction.date.between(start_date, end_date)).offset(offset).limit(limit).all()        
+    return transactions
+
+def TransactionsDates(start_date,end_date,db:Session):
+    transactions = db.query(model.Transaction).filter(model.Transaction.date.between(start_date, end_date)).all()        
     return transactions

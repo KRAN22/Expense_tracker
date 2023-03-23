@@ -1,17 +1,13 @@
 import { Grid } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 
-export const TransactionPagination = ({
-  totalPosts,
-  postPerPage,
-  setCurrentPage,
-}) => {
+export const TransactionPagination = ({ totalPosts, limit, setPage }) => {
   let page = 0;
-  for (let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalPosts / limit); i++) {
     page = i;
   }
   const onChangeHandler = (e) => {
-    setCurrentPage(+e?.target?.textContent);
+    setPage(+e.target.textContent);
   };
 
   return (

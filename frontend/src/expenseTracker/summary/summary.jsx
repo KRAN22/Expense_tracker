@@ -29,7 +29,7 @@ export const Summary = () => {
   };
 
   return (
-    <Grid container xs={12} height={"100vh"}>
+    <Grid container xs={12} height={"100vh"} sx={{ overflowY: "scroll" }}>
       <Grid
         item
         container
@@ -92,7 +92,7 @@ export const Summary = () => {
                   xs={6}
                   p={2}
                   fontWeight={"Bold"}
-                  sx={{ background: "#FF7F50" }}
+                  sx={{ background: "#AFB1AE" }}
                 >
                   TotalBalance
                 </Grid>
@@ -100,7 +100,7 @@ export const Summary = () => {
                   item
                   xs={6}
                   p={2}
-                  sx={{ background: "#2E8B57", color: "White" }}
+                  sx={{ background: "#A8A9AD", color: "Black" }}
                 >
                   ${list.bankBalance}
                 </Grid>
@@ -143,11 +143,11 @@ export const Summary = () => {
                       textAlign: "center",
                       background:
                         item.category_type === "Savings"
-                          ? "#2E8B57"
+                          ? "#A8A9AD"
                           : item.category_type === "Expense"
-                          ? "#FF7F50"
-                          : "#000000",
-                      color: "white",
+                          ? "#AFB1AE"
+                          : "#D8D8D8",
+                      color: "black",
                     }}
                   >
                     <Grid item xs={4}>

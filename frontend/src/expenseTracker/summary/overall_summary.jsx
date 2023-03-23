@@ -36,9 +36,9 @@ export const SummaryCategoryType = (props) => {
             sx={{
               textAlign: "center",
               background:
-                item.category.category_type === "Savings"
+                item.category_type === "Savings"
                   ? "#A8A9AD"
-                  : item.category.category_type === "Expense"
+                  : item.category_type === "Expense"
                   ? "#AFB1AE"
                   : "#D8D8D8",
               color: "black",

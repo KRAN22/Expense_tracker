@@ -1,9 +1,11 @@
-from routers import category_router
-from routers import transaction_router
+from services import category_services
+from repository import transaction_repo
 
 def getSummary(start_date,end_date,db):
-    categories = category_router.get_all_categories(db)
-    transactions_db = transaction_router.filter_transaction(start_date,end_date,db)
+    print("**********",start_date,end_date)
+    categories = category_services.getAllCategories(db)
+    transactions_db = transaction_repo.TransactionsDates(start_date,end_date,db)
+    
     categorySummary = []
     for category in categories:
         acc = 0

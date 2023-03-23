@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from schemas import Transaction,UpdateTransaction
 from logger import loggers
 from services import transaction_services
+from datetime import datetime
 
 
 router = APIRouter(
@@ -19,11 +20,17 @@ def add_transaction(transaction:Transaction,db:Session=Depends(get_db)):
     return  result
 
 @router.get("/")
-def get_all_transactions(db:Session=Depends(get_db)):
+def get_all_transactions(limit: int = 10,
+    page: int = 1 ,
+    start_date: str = "1970-01-01",
+    end_date: str= datetime.today().strftime('%Y-%m-%d') ,
+    db: Session = Depends(get_db)):
     loggers.info("Get all transactions request received...")
-    result = transaction_services.GetAllTransactions(db)
+    count = len(transaction_services.GetAllTransactions(db))   
+    result = transaction_services.filterTransaction(start_date,end_date,limit,page,db)
     loggers.info("Successfully get all Transactions...")
-    return result
+    print(result)
+    return {"date":result,"count":count}
 
 @router.delete("/deleteTransaction/{id}")
 def delete_transaction(id:int,db:Session=Depends(get_db)):
@@ -39,9 +46,4 @@ def update_transaction(id:int,transaction :UpdateTransaction,db:Session=Depends(
     loggers.info("Successfully edit transaction...")
     return result
     
-@router.get("/filterTransaction")
-def filter_transaction(start_date:str,end_date:str,db:Session=Depends(get_db)):
-    loggers.info("get filter Transaction request received...")
-    result = transaction_services.filterTransaction(start_date,end_date,db)
-    loggers.info("Successfully get all filter transaction....")
-    return result
+
