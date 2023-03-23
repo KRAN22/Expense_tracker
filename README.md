@@ -34,3 +34,5 @@ In this module you can Add your Category and you can edit and delete your catego
 ### Transactions
 
 In this module you can add your Transaction and you can edit and delete your transactions and you can see all transactions here like this...
+
+![transaction](https://user-images.githubusercontent.com/91652767/227126489-0ccff627-dcc6-4a4c-8482-7e9e6f146065.png)
