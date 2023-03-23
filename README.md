@@ -48,3 +48,11 @@ This module allows you to retrieve your overall summary, category-specific summa
 ### Category Summary:
 
 ![Screenshot (76)](https://user-images.githubusercontent.com/91652767/227127506-acca0322-8df5-4ade-9eec-0401cb5c4f23.png)
+
+## Tools
+
+1.React
+2.Material Ui
+4.FastApi
+5.SqlAlchemy(ORM)
+5.MySql
