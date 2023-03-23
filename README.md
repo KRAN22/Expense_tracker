@@ -5,13 +5,13 @@ You can login with your credentials or by registering with an username, email an
 
 ### functionalities
 
-#### 1.Login Modules
+#### Login Modules
 
-#### 1.Category Modules
+#### Category Modules
 
-#### 1.Transactions Modules
+#### Transactions Modules
 
-#### 1.Summary Modules
+#### Summary Modules
 
 #### Login
 
