@@ -29,13 +29,14 @@ There is no account for you. Here, you can open an account.
 
 You can add, edit, and delete categories in this module, and you can view all of the categories here. such like this.
 
-![Screenshot (74)](https://user-images.githubusercontent.com/91652767/227125135-624ec796-bc51-48db-b549-90965bb03107.png)
+![Screenshot (77)](https://user-images.githubusercontent.com/91652767/227131620-543d6527-6d06-44d0-9505-757b6ee3ad73.png)
+
 
 ### Transactions
 
 You can add transactions, update and delete them, and view all of your transactions in this module in the manner shown above.
 
-![transaction](https://user-images.githubusercontent.com/91652767/227126489-0ccff627-dcc6-4a4c-8482-7e9e6f146065.png)
+![Screenshot (78)](https://user-images.githubusercontent.com/91652767/227131683-f538b31b-75e0-4ca1-a60f-7a716613ea3c.png)
 
 ### Summary
 
