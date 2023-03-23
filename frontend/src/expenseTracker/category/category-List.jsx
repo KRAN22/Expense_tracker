@@ -149,12 +149,12 @@ export const CategoryList = () => {
                             onClickEdit(item.categoryName, item.id)
                           }
                         >
-                          <EditIcon style={{ color: "white" }} />
+                          <EditIcon style={{ color: "black" }} />
                         </Button>
                       </Grid>
                       <Grid item xs={2}>
                         <Button onClick={() => OnClickDelete(item.id)}>
-                          <DeleteTwoToneIcon style={{ color: "white" }} />
+                          <DeleteTwoToneIcon style={{ color: "black" }} />
                         </Button>
                       </Grid>
                     </Grid>

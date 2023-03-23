@@ -217,12 +217,12 @@ export const Transaction = () => {
                             )
                           }
                         >
-                          <EditIcon style={{ color: "white" }} />
+                          <EditIcon style={{ color: "black" }} />
                         </Button>
                       </Grid>
                       <Grid item xs={2}>
                         <Button onClick={() => OnClickDelete(item.id)}>
-                          <DeleteTwoToneIcon sx={{ color: "white" }} />
+                          <DeleteTwoToneIcon sx={{ color: "black" }} />
                         </Button>
                       </Grid>
                     </Grid>
