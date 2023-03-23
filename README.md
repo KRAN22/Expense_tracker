@@ -27,5 +27,10 @@ You Don't Have a Account You can create a account here.
 
 ### Category
 
-In this module you can Add your Category and you can edit your category and you can see all the categories here Like this..
+In this module you can Add your Category and you can edit and delete your categories and you can see all the categories here Like this..
+
 ![Screenshot (74)](https://user-images.githubusercontent.com/91652767/227125135-624ec796-bc51-48db-b549-90965bb03107.png)
+
+### Transactions
+
+In this module you can add your Transaction and you can edit and delete your transactions and you can see all transactions here like this...
