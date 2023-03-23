@@ -11,6 +11,8 @@ class User(Base):
     username = Column(String(255))
     email = Column(String(255))
     password = Column(String(255))
+      
+    category = relationship("Category", back_populates="user")
 
     def __repr__(self):
         return f"<User {self.username}>"
@@ -21,6 +23,9 @@ class Category(Base):
     id = Column(Integer,primary_key=True,index= True,autoincrement=True)
     category_type = Column(String(225))
     categoryName = Column(String(255))
+    user_id = Column(Integer,ForeignKey("user.id"))
+    
+    user = relationship("User",back_populates="category")
     
     transaction = relationship("Transaction", back_populates="category")
     

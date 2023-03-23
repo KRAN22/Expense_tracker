@@ -1,6 +1,7 @@
-from fastapi import APIRouter,Depends
+from fastapi import APIRouter,Depends,HTTPException,status
 from sqlalchemy.orm import Session 
 from services import category_services
+from fastapi_jwt_auth.auth_jwt import AuthJWT
 from database import get_db
 from schemas import Category
 from logger import loggers
@@ -12,8 +13,15 @@ router = APIRouter(
 )
 
 @router.post("/addCategory")
-def category(category:Category,db:Session=Depends(get_db)):
+def category(category:Category,Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
     loggers.info("post category request received....")
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        loggers.error(e.massage)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail= e.message
+                            )
     result = category_services.CreateCategory(category,db)
     loggers.info("Successfully created category...")
     return result
