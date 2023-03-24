@@ -1,9 +1,9 @@
 from services import category_services
 from repository import transaction_repo
 
-def getSummary(start_date,end_date,db):
+def getSummary(start_date,end_date,user_id,db):
     categories = category_services.getAllCategories(db)
-    transactions_db = transaction_repo.TransactionsDates(start_date,end_date,db)
+    transactions_db = transaction_repo.TransactionsDates(start_date,end_date,user_id,db)
     
     categorySummary = []
     for category in categories:

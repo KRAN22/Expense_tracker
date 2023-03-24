@@ -45,5 +45,5 @@ def filterTransaction(start_date,end_date,limit ,page,id,db:Session):
     return transactions
 
 def TransactionsDates(start_date,end_date,id,db:Session):
-    transactions = db.query(model.Transaction).filter(model.Transaction.user_id==id).filter(model.Transaction.date.between(start_date, end_date)).all()        
+    transactions = db.query(model.Transaction).filter(model.Transaction.date.between(start_date, end_date)).filter(model.Transaction.user_id==id).all()        
     return transactions

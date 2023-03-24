@@ -12,8 +12,14 @@ export const Summary = () => {
   const onSearch = async () => {
     setEvent(true);
     const baseURL = `http://127.0.0.1:8000/api/summary/?start_date=${start_date}&end_date=${end_date}`;
+    const token = localStorage.getItem("AccessToken");
     try {
-      const response = await axios.get(baseURL);
+      const response = await axios.get(baseURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setList(response.data);
     } catch (e) {
       console.log(e.response.data);
