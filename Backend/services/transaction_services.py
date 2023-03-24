@@ -4,7 +4,7 @@ from repository import category_repo
 from logger import loggers
 import model
 
-def addTransaction(transaction,db):
+def addTransaction(transaction,user_id,db):
     categoryId = category_repo.getCategoryById(transaction.category_id,db)
     
     if categoryId:
@@ -12,7 +12,8 @@ def addTransaction(transaction,db):
             category_id = transaction.category_id,
             amount = transaction.amount,
             date = transaction.date,
-            comments = transaction.comments
+            comments = transaction.comments,
+            user_id = user_id
         )
         result = transaction_repo.addTransaction(new_transaction,db)
         return result
@@ -22,8 +23,8 @@ def addTransaction(transaction,db):
                         detail="The transaction is failed due to category not found in categories")
     
 
-def GetAllTransactions(db):
-    result = transaction_repo.getAllTransactions(db)
+def GetTransactionsUserId(user_id,db):
+    result = transaction_repo.GetTransactionsUserId(user_id,db)
     return result
 
 def deleteTransaction(id,db):
@@ -52,6 +53,6 @@ def updateTransaction(id,transaction,db):
     result = transaction_repo.updateTransaction(current_transaction,db)
     return result
     
-def filterTransaction(start_date,end_date,limit,page,db):
-    result = transaction_repo.filterTransaction(start_date,end_date,limit,page,db)
+def filterTransaction(start_date,end_date,limit,page,id,db):
+    result = transaction_repo.filterTransaction(start_date,end_date,limit,page,id,db)
     return result

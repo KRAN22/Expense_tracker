@@ -16,7 +16,7 @@ export const Transaction = () => {
   const [comments, setComments] = useState("");
   const [id, setId] = useState();
   const [categoryType, setCategoryType] = useState();
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [limit, setLimitPage] = useState(10);
   const [totalPosts, setTotalPosts] = useState();
 
@@ -25,9 +25,16 @@ export const Transaction = () => {
   }, [page]);
 
   const getTransaction = async () => {
-    const baseURL = `http://127.0.0.1:8000/api/transaction/?limit=${limit}&page=${page}`;
+    const baseURL = `http://127.0.0.1:8000/api/transaction/user_id/?limit=${limit}&page=${page}`;
+    const token = localStorage.getItem("AccessToken");
     try {
-      const response = await axios.get(baseURL);
+      const response = await axios.get(baseURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
       setTotalPosts(response.data.count);
       setList(response.data.date);
     } catch (e) {
@@ -49,8 +56,14 @@ export const Transaction = () => {
   const OnClickDelete = async (id) => {
     console.log(id);
     const baseURL = `http://127.0.0.1:8000/api/transaction/deleteTransaction/${id}`;
+    const token = localStorage.getItem("AccessToken");
     try {
-      const response = await axios.delete(baseURL);
+      const response = await axios.delete(baseURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         window.location.reload();
       }

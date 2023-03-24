@@ -35,11 +35,15 @@ export const EditTransaction = ({ transaction }) => {
   const SubmitHandler = async () => {
     const baseUrl = `http://127.0.0.1:8000/api/transaction/editTransaction/${id}`;
     const body = { amount: +amount, date, comments, category_type };
-
-    console.log({ baseUrl, body });
+    const token = localStorage.getItem("AccessToken");
 
     try {
-      const response = await axios.put(baseUrl, body);
+      const response = await axios.put(baseUrl, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         window.location.reload();
       }

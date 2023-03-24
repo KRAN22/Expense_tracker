@@ -19,6 +19,12 @@ def getAllCategories(db:Session):
     result = db.query(model.Category).all()
     return result
 
+def getAllTractionByUserId(id,db:Session):
+    queries=[]
+    queries.append(model.Category.user_id == id)
+    result =  db.query(model.Category).filter(*queries).all()
+    return result
+    
 def getCategoryById(id,db:Session):
     queries=[]
     queries.append(model.Category.id == id)

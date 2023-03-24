@@ -19,7 +19,6 @@ def category(category:Category,Authorize:AuthJWT=Depends(),db:Session=Depends(ge
         Authorize.jwt_required()
         jwt_payload = Authorize.get_raw_jwt()
         user_id = jwt_payload["id"]
-        print(user_id)
     except Exception as e:
         loggers.error(e.massage)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
@@ -42,6 +41,24 @@ def get_all_categories(Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
     result = category_services.getAllCategories(db)
     loggers.info("Successfully get all categories...")
     return result
+
+@router.get("/user_id")
+def get_all_by_user_id(Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
+    loggers.info("get category by user_id request received...")
+    try:
+        Authorize.jwt_required()
+        jwt_payload = Authorize.get_raw_jwt()
+        user_id = jwt_payload["id"]
+    except Exception as e:
+        loggers.error(e.massage)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail= e.message
+                            )
+    result = category_services.getAllTractionByUserId(user_id,db)
+    loggers.info("Successfully get all  by user_id categories...")
+    return result
+
+
 
 @router.get("/{id}")
 def get_category_by_id(id:int,Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):

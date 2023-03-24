@@ -13,6 +13,10 @@ def getAllTransactions(db:Session):
     results = db.query(model.Transaction).options(joinedload(model.Transaction.category)).all()
     return results
 
+def GetTransactionsUserId(id,db:Session):
+    results = db.query(model.Transaction).options(joinedload(model.Transaction.category)).filter(model.Transaction.user_id == id).all()
+    return results
+
 def getTransactionById(id,db:Session):
     queries = []
     queries.append(model.Transaction.id == id)
@@ -35,11 +39,11 @@ def updateTransaction(transaction,db:Session):
     db.refresh(transaction) 
     return transaction
     
-def filterTransaction(start_date,end_date,limit ,page,db:Session):  
+def filterTransaction(start_date,end_date,limit ,page,id,db:Session):  
     offset = (page - 1) * limit
-    transactions = db.query(model.Transaction).options(joinedload(model.Transaction.category)).filter(model.Transaction.date.between(start_date, end_date)).offset(offset).limit(limit).all()        
+    transactions = db.query(model.Transaction).options(joinedload(model.Transaction.category)).filter(model.Transaction.user_id==id).filter(model.Transaction.date.between(start_date, end_date)).offset(offset).limit(limit).all()        
     return transactions
 
-def TransactionsDates(start_date,end_date,db:Session):
-    transactions = db.query(model.Transaction).filter(model.Transaction.date.between(start_date, end_date)).all()        
+def TransactionsDates(start_date,end_date,id,db:Session):
+    transactions = db.query(model.Transaction).filter(model.Transaction.user_id==id).filter(model.Transaction.date.between(start_date, end_date)).all()        
     return transactions

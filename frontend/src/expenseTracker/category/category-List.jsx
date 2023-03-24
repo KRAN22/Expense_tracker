@@ -7,7 +7,7 @@ import { CategoryEdit } from "./category-Edit";
 import { Button, Divider, Grid, Typography } from "@mui/material";
 
 export const CategoryList = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState();
   const [event, setEvent] = useState(false);
   const [edit, setEdit] = useState(false);
   const [categoryName, setCategoryName] = useState("");
@@ -18,19 +18,34 @@ export const CategoryList = () => {
   }, []);
 
   const getCategory = async () => {
-    const baseURL = "http://127.0.0.1:8000/api/category/";
+    const baseURL = "http://127.0.0.1:8000/api/category/user_id";
+    const token = localStorage.getItem("AccessToken");
     try {
-      const response = await axios.get(baseURL);
+      const response = await axios.get(baseURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response);
       setList(response.data);
     } catch (e) {
       console.log(e.response.data);
     }
   };
 
+  console.log(list);
+
   const OnClickDelete = async (id) => {
     const baseURL = `http://127.0.0.1:8000/api/category/deleteCategory/${id}`;
+    const token = localStorage.getItem("AccessToken");
     try {
-      const response = await axios.delete(baseURL);
+      const response = await axios.delete(baseURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         window.location.reload();
       }
@@ -111,7 +126,7 @@ export const CategoryList = () => {
                   </Grid>
                 </Grid>
                 <Divider color={"red"} />
-                {list.map((item) => {
+                {list?.map((item) => {
                   return (
                     <Grid
                       item

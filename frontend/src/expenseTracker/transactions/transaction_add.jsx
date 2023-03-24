@@ -23,9 +23,15 @@ export const AddTransaction = () => {
   }, []);
 
   const getTransaction = async () => {
-    const baseURL = "http://127.0.0.1:8000/api/category/";
+    const baseURL = "http://127.0.0.1:8000/api/category/user_id";
+    const token = localStorage.getItem("AccessToken");
     try {
-      const response = await axios.get(baseURL);
+      const response = await axios.get(baseURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setList(response.data);
     } catch (e) {
       console.log(e.response.data);
@@ -48,9 +54,15 @@ export const AddTransaction = () => {
 
   const SubmitHandler = async () => {
     const baseURL = "http://127.0.0.1:8000/api/transaction/add_transaction";
+    const token = localStorage.getItem("AccessToken");
     const body = { category_id, amount, date, comments };
     try {
-      const response = await axios.post(baseURL, body);
+      const response = await axios.post(baseURL, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         window.location.reload();
       }

@@ -14,9 +14,15 @@ export const CategoryEdit = (props) => {
 
   const onClickSubmit = async () => {
     const baseURL = `http://127.0.0.1:8000/api/category/updateCategory/${id}`;
+    const token = localStorage.getItem("AccessToken");
     const body = { categoryName };
     try {
-      const response = await axios.put(baseURL, body);
+      const response = await axios.put(baseURL, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         window.location.reload();
       }

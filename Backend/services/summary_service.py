@@ -2,7 +2,6 @@ from services import category_services
 from repository import transaction_repo
 
 def getSummary(start_date,end_date,db):
-    print("**********",start_date,end_date)
     categories = category_services.getAllCategories(db)
     transactions_db = transaction_repo.TransactionsDates(start_date,end_date,db)
     

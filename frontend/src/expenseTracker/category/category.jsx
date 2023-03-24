@@ -27,9 +27,15 @@ export const Category = () => {
   const SubmitHandler = async () => {
     if (categoryName.length > 0) {
       const baseURL = "http://127.0.0.1:8000/api/category/addCategory";
+      const token = localStorage.getItem("AccessToken");
       const body = { category_type, categoryName };
       try {
-        const response = await axios.post(baseURL, body);
+        const response = await axios.post(baseURL, body, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (response) {
           window.location.reload();
         }

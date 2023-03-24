@@ -13,6 +13,8 @@ class User(Base):
     password = Column(String(255))
       
     categories = relationship("Category", back_populates="user")
+    
+    transaction = relationship("Transaction", back_populates="user")
 
     def __repr__(self):
         return f"<User {self.username}>"
@@ -41,7 +43,9 @@ class Transaction(Base):
     date = Column(Date)
     comments = Column(String(255))
     is_delete = Column(Boolean,default=False)
+    user_id = Column(Integer,ForeignKey("user.id"))
     
+    user = relationship("User",back_populates="transaction")
     category = relationship("Category", back_populates="transaction")
     
     def __repr__(self):
