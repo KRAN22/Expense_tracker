@@ -17,8 +17,8 @@ export const ExpenseTracker = () => {
 
   return (
     <Grid
-      sx={{ height: "100vh", display: "flex", overflow: "hidden" }}
       container
+      sx={{ height: "100vh", display: "flex", overflow: "hidden" }}
       xs={12}
     >
       <Grid
