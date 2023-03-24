@@ -12,7 +12,7 @@ class User(Base):
     email = Column(String(255))
     password = Column(String(255))
       
-    category = relationship("Category", back_populates="user")
+    categories = relationship("Category", back_populates="user")
 
     def __repr__(self):
         return f"<User {self.username}>"
@@ -25,7 +25,7 @@ class Category(Base):
     categoryName = Column(String(255))
     user_id = Column(Integer,ForeignKey("user.id"))
     
-    user = relationship("User",back_populates="category")
+    user = relationship("User",back_populates="categories")
     
     transaction = relationship("Transaction", back_populates="category")
     
@@ -40,7 +40,7 @@ class Transaction(Base):
     amount = Column(Integer)
     date = Column(Date)
     comments = Column(String(255))
-    id_delete = Column(Boolean,default=False)
+    is_delete = Column(Boolean,default=False)
     
     category = relationship("Category", back_populates="transaction")
     

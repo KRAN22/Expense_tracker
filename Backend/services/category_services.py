@@ -3,7 +3,7 @@ from repository import category_repo
 from logger import loggers
 import model
 
-def CreateCategory(Category,db):
+def CreateCategory(Category,user_id,db):
     category = category_repo.getCategoryByName(Category.categoryName,db)
     if category:
         loggers.info("The category is already excited....")
@@ -12,7 +12,8 @@ def CreateCategory(Category,db):
     
     new_category = model.Category(
         category_type = Category.category_type,
-        categoryName = Category.categoryName
+        categoryName = Category.categoryName,
+        user_id = user_id
     )
     result = category_repo.createCategory(new_category,db)
     return result

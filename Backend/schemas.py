@@ -72,6 +72,7 @@ class Category(BaseModel):
         orm_mode = True
         schema_extra={
             'example':{
+                'user_id':1,
                 'category_type': "INCOME",
                 'categoryName':"Home"
             }

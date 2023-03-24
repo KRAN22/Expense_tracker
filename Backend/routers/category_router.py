@@ -17,39 +17,70 @@ def category(category:Category,Authorize:AuthJWT=Depends(),db:Session=Depends(ge
     loggers.info("post category request received....")
     try:
         Authorize.jwt_required()
+        jwt_payload = Authorize.get_raw_jwt()
+        user_id = jwt_payload["id"]
+        print(user_id)
     except Exception as e:
         loggers.error(e.massage)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail= e.message
                             )
-    result = category_services.CreateCategory(category,db)
+    result = category_services.CreateCategory(category,user_id,db)
     loggers.info("Successfully created category...")
     return result
 
 @router.get("/")
-def get_all_categories(db:Session=Depends(get_db)):
+def get_all_categories(Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
     loggers.info("get category request received...")
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        loggers.error(e.massage)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail= e.message
+                            )
     result = category_services.getAllCategories(db)
     loggers.info("Successfully get all categories...")
     return result
 
 @router.get("/{id}")
-def get_category_by_id(id:int,db:Session=Depends(get_db)):
+def get_category_by_id(id:int,Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
     loggers.info("get category bt id request received....")
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        loggers.error(e.massage)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail= e.message
+                            )
     result = category_services.getCategoryById(id,db)
     loggers.info("Successfully get category by id....")
     return result
 
 @router.delete("/deleteCategory/{id}")
-def delete_category(id:int,db:Session=Depends(get_db)):
+def delete_category(id:int,Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
     loggers.info("Delete category request received...")
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        loggers.error(e.massage)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail= e.message
+                            )
     result = category_services.deleteCategory(id,db)
     loggers.info("Successfully delete category...")
     return result
 
 @router.put("/updateCategory/{id}")
-def update_category(category:Category,id:int,db:Session=Depends(get_db)):
+def update_category(category:Category,id:int,Authorize:AuthJWT=Depends(),db:Session=Depends(get_db)):
     loggers.info("update request received....")
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        loggers.error(e.massage)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail= e.message
+                            )
     result = category_services.updateCategory(id,category,db)
     loggers.info("Successfully updated todo....")
     return result
