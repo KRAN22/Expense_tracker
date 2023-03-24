@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import image from "../image/image1.png";
 import { Link, Outlet } from "react-router-dom";
 import { Box, Button, Divider, Grid } from "@mui/material";
 import "./main.css";
+import jwt_decode from "jwt-decode";
 
 export const ExpenseTracker = () => {
+  const [name, setName] = useState();
   const clear = () => {
     window.localStorage.clear();
   };
+  useEffect(() => {
+    const token = localStorage.getItem("AccessToken");
+    setName(jwt_decode(token)["sub"]);
+  }, []);
+
   return (
     <Grid
       sx={{ height: "100vh", display: "flex", overflow: "hidden" }}
@@ -28,7 +35,7 @@ export const ExpenseTracker = () => {
           <Grid container item xs={3} direction="column" margin={"auto"}>
             <Box className="ex-image">
               <img src={image} alt="people" />
-              <h5>Hello,kranthi</h5>
+              <h5>Hello,{name}</h5>
             </Box>
             <Divider color="white" />
           </Grid>
