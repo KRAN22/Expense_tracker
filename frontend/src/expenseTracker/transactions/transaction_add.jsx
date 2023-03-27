@@ -94,8 +94,8 @@ export const AddTransaction = () => {
               label="category"
               onChange={handleChange}
             >
-              {list.map((item) => (
-                <MenuItem value={item.id}>{item.categoryName}</MenuItem>
+              {list.map((items) => (
+                <MenuItem value={items.id}>{items.categoryName}</MenuItem>
               ))}
             </Select>
           </FormControl>
