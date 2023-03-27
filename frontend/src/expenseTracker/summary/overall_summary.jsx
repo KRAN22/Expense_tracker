@@ -24,31 +24,31 @@ export const SummaryCategoryType = (props) => {
           <Divider color={"black"} />
         </Grid>
       </Grid>
-      {list?.map((item) => {
+      {list?.map((items) => {
         return (
           <Grid
             item
             container
-            key={item.category_type}
+            key={items.category_type}
             xs={12}
             margin={"Auto"}
             p={2}
             sx={{
               textAlign: "center",
               background:
-                item.category_type === "Savings"
+                items.category_type === "Savings"
                   ? "#A8A9AD"
-                  : item.category_type === "Expense"
+                  : items.category_type === "Expense"
                   ? "#AFB1AE"
                   : "#D8D8D8",
               color: "black",
             }}
           >
             <Grid item xs={6} textAlign={"center"}>
-              <Typography>{item.category_type}</Typography>
+              <Typography>{items.category_type}</Typography>
             </Grid>
             <Grid item xs={6} textAlign={"center"}>
-              <Typography>${item.amount}</Typography>
+              <Typography>${items.amount}</Typography>
             </Grid>
           </Grid>
         );

@@ -137,33 +137,33 @@ export const Summary = () => {
                   <Divider color={"black"} />
                 </Grid>
               </Grid>
-              {list.categorySummary?.map((item) => {
+              {list.categorySummary?.map((items) => {
                 return (
                   <Grid
                     item
                     container
-                    key={item.id}
+                    key={items.id}
                     xs={12}
                     p={2}
                     sx={{
                       textAlign: "center",
                       background:
-                        item.category_type === "Savings"
+                        items.category_type === "Savings"
                           ? "#A8A9AD"
-                          : item.category_type === "Expense"
+                          : items.category_type === "Expense"
                           ? "#AFB1AE"
                           : "#D8D8D8",
                       color: "black",
                     }}
                   >
                     <Grid item xs={4}>
-                      <Typography>{item.categoryName}</Typography>
+                      <Typography>{items.categoryName}</Typography>
                     </Grid>
                     <Grid item xs={4}>
-                      <Typography>{item.category_type}</Typography>
+                      <Typography>{items.category_type}</Typography>
                     </Grid>
                     <Grid item xs={4}>
-                      <Typography>${item.amount}</Typography>
+                      <Typography>${items.amount}</Typography>
                     </Grid>
                   </Grid>
                 );

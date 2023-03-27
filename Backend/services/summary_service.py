@@ -33,7 +33,8 @@ def getSummary(start_date,end_date,user_id,db):
         "category_type": types,
         "amount": acc
         })
-        
+    
+    print(overAllSummary)
     total_income = sum(item["amount"] for item in overAllSummary if item["category_type"] == "Income")
     total_savings = sum(item["amount"] for item in overAllSummary if item["category_type"] == "Savings")
     total_expense = sum(item["amount"] for item in overAllSummary if item["category_type"] == "Expense")

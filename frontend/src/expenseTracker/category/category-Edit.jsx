@@ -55,7 +55,7 @@ export const CategoryEdit = (props) => {
           onChange={onChangeHandler}
         />
       </Grid>
-      <Grid xs={12}>
+      <Grid item xs={12}>
         <Button fullWidth variant="contained" onClick={onClickSubmit}>
           Submit
         </Button>

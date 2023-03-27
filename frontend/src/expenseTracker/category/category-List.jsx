@@ -27,14 +27,11 @@ export const CategoryList = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
       setList(response.data);
     } catch (e) {
       console.log(e.response.data);
     }
   };
-
-  console.log(list);
 
   const OnClickDelete = async (id) => {
     const baseURL = `http://127.0.0.1:8000/api/category/deleteCategory/${id}`;
@@ -77,7 +74,7 @@ export const CategoryList = () => {
                 <Grid item xs={12} p={3} sx={{ textAlign: "center" }}>
                   <Typography variant="h4">Category List</Typography>
                 </Grid>
-                <Grid id item xs={10} margin={"Auto"}>
+                <Grid item xs={10} margin={"Auto"}>
                   <Button
                     sx={{ float: "right" }}
                     variant="contained"
@@ -126,49 +123,49 @@ export const CategoryList = () => {
                   </Grid>
                 </Grid>
                 <Divider color={"red"} />
-                {list?.map((item) => {
+                {list?.map((items) => {
                   return (
                     <Grid
                       item
                       container
-                      key={item.id}
+                      key={items.id}
                       xs={10}
                       margin={"Auto"}
                       sx={{
                         textAlign: "center",
                         background:
-                          item.category_type === "Savings"
+                          items.category_type === "Savings"
                             ? "#A8A9AD"
-                            : item.category_type === "Expense"
+                            : items.category_type === "Expense"
                             ? "#AFB1AE"
                             : "#D8D8D8",
                         color: "black",
                       }}
                     >
                       <Grid item xs={2}>
-                        <Typography variant="h6">{item.id}</Typography>
+                        <Typography variant="h6">{items.id}</Typography>
                       </Grid>
                       <Grid item xs={3}>
                         <Typography variant="h6">
-                          {item.category_type}
+                          {items.category_type}
                         </Typography>
                       </Grid>
                       <Grid item xs={3}>
                         <Typography variant="h6">
-                          {item.categoryName}
+                          {items.categoryName}
                         </Typography>
                       </Grid>
                       <Grid item xs={2}>
                         <Button
                           onClick={() =>
-                            onClickEdit(item.categoryName, item.id)
+                            onClickEdit(items.categoryName, items.id)
                           }
                         >
                           <EditIcon style={{ color: "black" }} />
                         </Button>
                       </Grid>
                       <Grid item xs={2}>
-                        <Button onClick={() => OnClickDelete(item.id)}>
+                        <Button onClick={() => OnClickDelete(items.id)}>
                           <DeleteTwoToneIcon style={{ color: "black" }} />
                         </Button>
                       </Grid>

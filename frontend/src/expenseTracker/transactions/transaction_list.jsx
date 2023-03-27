@@ -34,7 +34,6 @@ export const Transaction = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       setTotalPosts(response.data.count);
       setList(response.data.date);
     } catch (e) {
@@ -54,7 +53,6 @@ export const Transaction = () => {
   };
 
   const OnClickDelete = async (id) => {
-    console.log(id);
     const baseURL = `http://127.0.0.1:8000/api/transaction/deleteTransaction/${id}`;
     const token = localStorage.getItem("AccessToken");
     try {
@@ -92,15 +90,7 @@ export const Transaction = () => {
           {event ? (
             <AddTransaction />
           ) : (
-            <Grid
-              container
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              height={"100%"}
-              overflowY={"scroll"}
-            >
+            <Grid container item xs={12} sm={12} md={12} height={"100%"}>
               <Grid
                 item
                 container
@@ -176,12 +166,12 @@ export const Transaction = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                {list?.map((item) => {
+                {list?.map((items) => {
                   return (
                     <Grid
                       item
                       container
-                      key={item.id}
+                      key={items.id}
                       xs={12}
                       sm={11}
                       md={11}
@@ -189,9 +179,9 @@ export const Transaction = () => {
                       sx={{
                         textAlign: "center",
                         background:
-                          item.category.category_type === "Savings"
+                          items.category.category_type === "Savings"
                             ? "#A8A9AD"
-                            : item.category.category_type === "Expense"
+                            : items.category.category_type === "Expense"
                             ? "#AFB1AE"
                             : "#D8D8D8",
                         color: "black",
@@ -199,34 +189,34 @@ export const Transaction = () => {
                     >
                       <Grid item xs={2}>
                         <Typography variant="h6">
-                          {item.category.categoryName}
+                          {items.category.categoryName}
                         </Typography>
                       </Grid>
                       <Grid item xs={1}>
                         <Typography variant="h6">
-                          {item.category.category_type}
+                          {items.category.category_type}
                         </Typography>
                       </Grid>
                       <Grid item xs={2}>
-                        <Typography variant="h6">{item.amount}</Typography>
+                        <Typography variant="h6">{items.amount}</Typography>
                       </Grid>
                       <Grid item xs={2}>
                         <Typography variant="h6">
-                          {getDateFormat(item.date)}
+                          {getDateFormat(items.date)}
                         </Typography>
                       </Grid>
                       <Grid item xs={2}>
-                        <Typography variant="h6">{item.comments}</Typography>
+                        <Typography variant="h6">{items.comments}</Typography>
                       </Grid>
                       <Grid item xs={1}>
                         <Button
                           onClick={() =>
                             onClickEdit(
-                              item.amount,
-                              item.date,
-                              item.comments,
-                              item.id,
-                              item.category.category_type
+                              items.amount,
+                              items.date,
+                              items.comments,
+                              items.id,
+                              items.category.category_type
                             )
                           }
                         >
@@ -234,7 +224,7 @@ export const Transaction = () => {
                         </Button>
                       </Grid>
                       <Grid item xs={2}>
-                        <Button onClick={() => OnClickDelete(item.id)}>
+                        <Button onClick={() => OnClickDelete(items.id)}>
                           <DeleteTwoToneIcon sx={{ color: "black" }} />
                         </Button>
                       </Grid>
